@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Quest - Sign Up</title>
+		<style>
+			::-webkit-input-placeholder { 
+				color: #EFEFEF;
+			}
+			
+			Form{
+				Width: 32%; /*<!--30%,20%-->*/
+				Height: 300px;
+				Padding: 20px;
+				Margin: auto;
+				Background: none;
+				Font-size:20px;
+				Border: 2px solid #05386B;
+				Border-radius: 7px;
+				position: relative;
+				top: 110px;
+			}
+			
+			Input[type=text]{
+				Width:80%; /*<!--40%-->*/
+				Padding: 5px;
+				Font-size: 13px;
+				font-family: Menlo;
+				color: #EFEFEF;
+            }
+            Input[type=password]{
+				Width:80%; /*<!--40%-->*/
+				Padding: 5px;
+				Font-size: 13px;
+				font-family: Menlo;
+				color: #EFEFEF;
+			}
+			
+			</style>
+			
+		<link rel="stylesheet" type="text/css" href="newsignup2.css">
+	</head>
+
+	<body style="background-image: linear-gradient(#22FFAD 35%, rgb(13, 117, 79));">
+
+		<p style="text-align: right;">
+			<a onclick="window.location.href = 'SignUp.html'" class="button">Join</a>
+			<a onclick="window.location.href = 'login.html'" class="button">Log In</a>
+		</p>
+		
+		<a onclick="window.location.href = 'quest_home.html'" class="top-logo">
+			<img src="Qlogo1.png" alt="Quest Logo Top" width = 45>
+		</a>
+
+		<hr class="sexy_line" color="#05386B">
+		
+		<p id="Sign-Up">Sign Up</p>
+		
+		<div class="square">
+			<form align="middle" action="login.php" method="POST" id="form1">	
+                <input type="text" id="uname" name="username" placeholder="Enter your Username" style="color: #FFFFFF" onkeypress="field_wait()">
+                
+                <label for="uname" style="display: none; font-family: Menlo; color: red" id="errU">
+                    Username must be less than 20 characters.
+                </label>
+
+                <input type="text" id="email" name="email" placeholder="Enter your Email" style="color: #FFFFFF" onkeypress="field_wait()">
+                
+                <label for="email" style="display: none; font-family: Menlo; color: red" id="errE">
+                    Enter a valid email address
+                </label>
+
+                <input type="password" id="pword" name="password" placeholder="Create a Password" style="color: #FFFFFF" onkeypress="field_wait()">
+                
+                <label for="pword" style="display: none; font-family: Menlo; color: red" id="errP">
+                    Password must be less than 100 characters.
+                </label>
+
+                <input type="password" id="cword" name="conpassword" placeholder="Confirm Password" style="color: #FFFFFF" onkeypress="field_wait()"v>
+                
+                <label for="cword" style="display: none; font-family: Menlo; color: red" id="errC">
+                    Password fields must match.
+                </label>
+
+				<input type="submit" value="Sign Up" size="50">
+
+				<script>
+                    function field_wait(){
+                        setTimeout(field_checker, 500);
+                    }
+                    function field_checker() {
+                        var p = document.getElementById("pword").value;
+                        var c = document.getElementById("cword").value;
+                        var u = document.getElementById("uname").value;
+                        var e = document.getElementById("email").value;
+
+                        var pcheck = false;
+                        var ucheck = false;
+                        var echeck = false;
+
+                        if(p.length != 0 && c.length != 0){
+                            if(c != p) {
+                                document.getElementById("errC").style.display = "block";
+                                document.getElementById("form1").style.height = "320px";
+                                pcheck = false;
+                            }
+                            else{
+                                document.getElementById("errC").style.display = "none";
+                                document.getElementById("form1").style.height = "300px";
+                                pcheck = true;
+                            }
+                            if(p.length >= 100 || c.length >= 100){
+                                document.getElementById("errP").style.display = "block";
+                                document.getElementById("form1").style.height = "320px";
+                                pcheck = false;
+                            }
+                            else{
+                                document.getElementById("errP").style.display = "none";
+                                document.getElementById("form1").style.height = "300px";
+                                pcheck = true;
+                            }
+                        }
+
+                        if(u.length != 0) {
+                            if(u.length >= 20) {
+                                document.getElementById("errU").style.display = "block";
+                                document.getElementById("form1").style.height = "320px";
+                                ucheck = false;
+                            }
+                            else {
+                                document.getElementById("errU").style.display = "none";
+                                document.getElementById("form1").style.height = "300px";
+                                ucheck = true;
+                            }
+                        }
+
+                        if(e.length != 0) {
+                            if(!e.includes("@") || !e.includes(".")){
+                                document.getElementById("errE").style.display = "block";
+                                document.getElementById("form1").style.height = "320px";
+                                echeck = false;
+                            }
+                            else{
+                                document.getElementById("errE").style.display = "none";
+                                document.getElementById("form1").style.height = "300px";
+                                echeck = true;
+                            }
+                        }
+                    }
+                </script>
+
+
+			</form>
+		</div>
+	</body>
+</html>
