@@ -10,6 +10,7 @@
             body {
             margin: 0;
             font-family: menlo;
+            background-color: white;
             }
 
             .topnav {
@@ -37,12 +38,76 @@
             color: white;
             }
 
-            #contents div {
-                display: none;
+            .center {
+                margin: auto;
+                width: 75%;
+                height: 10%;
             }
 
-            #contents div:target {
-                display: block;
+            .sidecontainer {
+                margin-top: 5%;
+                height: auto;
+                width: 250px;
+                float:left;
+            }
+
+            .self {
+                border: 1px solid #05386B;
+                border-radius: 15px;
+                width: 100%;
+                height: 300px;
+                background-color: white;
+                padding: 5px;
+                color: #05386B;
+            }
+            .network{
+                border: 1px solid #05386B;
+                border-radius: 15px;
+                width: 100%;
+                height: 300px;
+                background-image: url("network.jpg"), linear-gradient(white, #05386B);
+                padding: 5px;
+                color: white;
+            }
+
+            .contentcontainer {
+                float:left;
+                margin-left: 35px;
+                margin-top: 5%;
+                width: 1000px;
+                height: auto;
+            }
+
+            .newscontainer {
+                width:auto;
+                height:100px;
+                margin-bottom: 40px;
+            }
+
+            .news {
+                width: 250px;
+                height: 100px;
+                float:left;
+                border: 1px solid #05386B;
+                border-radius: 15px;
+                background-color: #05386B;
+                color: white;
+            }
+
+            .feedcontainer {
+                margin-top: 40px;
+                width: 100%;
+                height: auto;
+            }
+
+            .project {
+                border: 1px solid #05386B;
+                border-radius: 15px;
+                width: 100%;
+                height: auto;
+                background-color: white;
+                color: #05386B;
+                padding: 5px;
             }
 
         </style>
@@ -53,40 +118,46 @@
             <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left">
             <i class="material-icons" style="color:#05386B; margin-top: 12px; float:left">search</i>
             <a href="#search" style="border-right: 3px solid #05386B;">Search</a>
-            <a href="#home">Home</a>
-            <a href="#projects">Projects</a>
-            <a href="#labs">Labs</a>
-            <a href="#professors">Professors</a>
-            <a href="#people">People</a>
-            <a href="#messages" style="float:right">Messages</a>
-            <a href="#notifications" style="float:right">Notifications</a>
+            <a href="home_page.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="labs.html">Labs</a>
+            <a href="professors.html">Professors</a>
+            <a href="people.html">People</a>
+            <a href="messages.html" style="float:right">Messages</a>
+            <a href="notifications.html" style="float:right">Notifications</a>
         </div>
 
-        <div id="contents">
-            <div id="search" style="padding-left:16px;">
-                Search Page
+        <div class="center">
+            <div class="sidecontainer">
+                <div class="self" style="margin-bottom: 5px;">Name</div>
+                <div class="network">Network</div>
             </div>
-            <div id="home" style="padding-left:16px;">
-                Home Page
+            <div class="contentcontainer">
+                <div class=newscontainer>
+                    <div class=news style="padding: 5px">News</div>
+                    <div class=news style="padding: 5px; margin-left: 35px">Scientific Papers</div>
+                    <div class=news style="padding: 5px; margin-left: 35px">Top Universities</div>
+                </div>
+                <div class=feedcontainer>
+                    <div class=project>
+                        <h1>
+                            Test Project
+                        </h1>
+                        <p>Location:</p>
+                        <p>Leader:</p>
+                        <p>Website:</p>
+                        <p>
+                            This is a description of the project. Right now it is a test project. Now I am just gonna add 
+                            space:
+                            test test test test test test test test test test test test test test test test test test test test 
+                            test test test test test test test test test test test test test test test test test test test test 
+                            test test test test test test test test test test test test test test test test test test test test 
+                            test test test test test test test test test test test test test test test test test test test test 
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div id="projects" style="padding-left:16px;">
-                Projects Page
-            </div>
-            <div id="labs" style="padding-left:16px;">
-                Labs Page
-            </div>
-            <div id="professors" style="padding-left:16px;">
-                Professors Page
-            </div>
-            <div id="people" style="padding-left:16px;">
-                People Page
-            </div>
-            <div id="messages" style="padding-left:16px;">
-                Messages Page
-            </div>
-            <div id="notifications" style="padding-left:16px;">
-                Notifications Page
-            </div>
+
         </div>
 
     </body>
