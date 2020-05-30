@@ -44,6 +44,18 @@ body {
   -webkit-text-stroke-color: #05386B;
 }
 
+#Login {
+  font-family: menlo;
+  color:#EFEFEF;
+  font-weight: regular;
+  font-size: 55px;
+  text-align: center;
+  position: relative;
+  top: 90px;
+  -webkit-text-stroke-width: 1.2px;
+  -webkit-text-stroke-color: #05386B;
+}
+
 /* "Sign Up" botton */
 input[type=submit] {
     width: 35%;
