@@ -58,7 +58,7 @@
         }
         .rectangle {
             height: 245px;
-            width: 1500px;
+            width: 100%;
             background-image: linear-gradient(#05386B 5%, #031C36);
             position: relative;
             top: -40px;
@@ -74,14 +74,17 @@
             position: relative;
             top: -45px;
             }
+        
+        
         #first-step {
             font-family: menlo;
             color:#EFEFEF;
             font-weight: bold;
             font-size: 20px;
             position: relative;
-            top: -270px;
-            left: 160px;
+            margin-left: 33%;
+            top: 10px;
+            float: left;
             
         }
         #second-step {
@@ -89,9 +92,10 @@
             color: #EFEFEF;
             font-weight: bold;
             font-size: 20px;
-            text-align: center;
             position: relative;
-            top: -314px;
+            margin-left: 33%;
+            top: 10px;
+            float: left;
         }
         #third-step {
             font-family: menlo;
@@ -99,8 +103,9 @@
             font-weight: bold;
             font-size: 20px;
             position: relative;
-            top: -359px;
-            left: 1015px;
+            margin-left: 33%;
+            top: 10px;
+            float: left;
         }
         a:hover {
             text-decoration: underline;
@@ -110,19 +115,25 @@
             color: #EFEFEF;
             font-weight: regular;
             font-size: 18px;
+            width: 100%;
         }
         #first-text {
             position: relative;
-            top: -360px;
-            left: 196px;
+            float: left;
+            margin-left: 33%;
         }
         #second-text {
             position: relative;
-            top: -463px;
-            left: 654px;
+            float: left;
+            margin-left: 33%;
         }
         #third-text {
             position: relative;
-            top: -545px;
-            left: 1053px;
+            float: left;
+            margin-left: 33%;
+        }
+        .container {
+            float: left;
+            height: auto;
+            width: 33%;
         }
