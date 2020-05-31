@@ -117,8 +117,8 @@
         <div class="topnav">
             <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left">
             <i class="material-icons" style="color:#05386B; margin-top: 12px; float:left">search</i>
-            <a href="#search" style="border-right: 3px solid #05386B;">Search</a>
-            <a href="home_page.html">Home</a>
+            <a href="home_page.php" style="border-right: 3px solid #05386B;">Search</a>
+            <a href="home_page.php">Home</a>
             <a href="projects.html">Projects</a>
             <a href="labs.html">Labs</a>
             <a href="professors.html">Professors</a>
