@@ -108,6 +108,7 @@
                 background-color: white;
                 color: #05386B;
                 padding: 5px;
+                margin-bottom: 10px;
             }
 
         </style>
@@ -148,24 +149,41 @@
                             $conn = mysqli_connect('localhost',$user,$pass) or die("Unable to connect");
                             mysqli_select_db($conn, $db) or die("Unable to connect to db");
 
-                            $sql = "SELECT ID, Title, Description_File FROM projects";
+                            $sql = "SELECT ID, Title, rLocation, Instructor, Website, rDescription FROM projects";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
-                                    $file = fopen($row['Description_File'], "r") or die("Unable to open file")
                         ?>
                                     <div class=project>
+                                        <h style="font-size: xx-large;">
                         <?php
-                                    while (($buffer = fgets($file, 4096)) !== false) {
-                                        echo $buffer;
-                                        echo "<br>";
-                                    }
+                                    echo $row["Title"]
                         ?>
+                                        </h>
+                                        <p>Location:
+                        <?php
+                                        echo $row["rLocation"]
+                        ?>
+                                        </p>
+                                        <p>Instructor:
+                        <?php
+                                        echo $row["Instructor"]
+                        ?>
+                                        </p>
+                                        <p>Website:
+                        <?php
+                                        echo $row["Website"]
+                        ?>
+                                        </p>
+                                        <p>
+                        <?php
+                                        echo $row["rDescription"]
+                        ?>
+                                        </p>
                                     </div>
                         <?php            
-                                    fclose($file);
                                 }
                             }
                         ?>
