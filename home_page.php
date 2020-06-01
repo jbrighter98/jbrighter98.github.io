@@ -47,7 +47,7 @@
             .sidecontainer {
                 margin-top: 5%;
                 height: auto;
-                width: 250px;
+                width: 20%;
                 float:left;
             }
 
@@ -74,7 +74,7 @@
                 float:left;
                 margin-left: 35px;
                 margin-top: 5%;
-                width: 1000px;
+                width: 70%;
                 height: auto;
             }
 
@@ -85,7 +85,7 @@
             }
 
             .news {
-                width: 250px;
+                width: 25%;
                 height: 100px;
                 float:left;
                 border: 1px solid #05386B;
@@ -144,7 +144,7 @@
 
                             $user = 'root';
                             $pass = '';
-                            $db = 'projects';
+                            $db = 'quest';
 
                             $conn = mysqli_connect('localhost',$user,$pass) or die("Unable to connect");
                             mysqli_select_db($conn, $db) or die("Unable to connect to db");
