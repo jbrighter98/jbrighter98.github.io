@@ -38,6 +38,49 @@
             color: white;
             }
 
+
+
+
+
+
+            .topnav .search-container {
+                float:left;
+                border-right: 3px solid #05386B;
+                padding: 4px;
+                height: 40px;
+            }
+
+            
+
+            .topnav input[type=text] {
+                margin-top: 5px;
+                float: left;
+                padding: 6px;
+                font-size: 17px;
+                border: none;
+            }
+
+            .topnav .search-container button {
+                float: left;
+                padding: 4px 5px;
+                margin-top: 5px;
+                background: #22FFAD;
+                font-size: 17px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .topnav .search-container button:hover {
+                background: #ddd;
+            }
+
+            
+
+
+
+
+
+
             .center {
                 margin: auto;
                 width: 75%;
@@ -78,6 +121,7 @@
                 height: auto;
             }
 
+
             .newscontainer {
                 width:auto;
                 height:100px;
@@ -117,8 +161,12 @@
 
         <div class="topnav">
             <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left">
-            <i class="material-icons" style="color:#05386B; margin-top: 12px; float:left">search</i>
-            <a href="home_page.php" style="border-right: 3px solid #05386B;">Search</a>
+            <div class="search-container">
+                <form action="search.php">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="material-icons" style="color:#05386B; float:left">search</i></button>
+                </form>
+            </div>
             <a href="home_page.php">Home</a>
             <a href="projects.html">Projects</a>
             <a href="labs.html">Labs</a>
@@ -144,47 +192,91 @@
 
                             $user = 'root';
                             $pass = '';
-                            $db = 'quest';
+                            $db = 'projects';
+
+                            $tag = array("arthist", "econ", "cmpsci");
+
+                            ?>
+                                <div class=project>
+                            <?php
+                            foreach($tag as $tagelement){
+                                echo "$tagelement ";
+                            }
+                            ?>
+                                </div>
+                            <?php
 
                             $conn = mysqli_connect('localhost',$user,$pass) or die("Unable to connect");
                             mysqli_select_db($conn, $db) or die("Unable to connect to db");
 
-                            $sql = "SELECT ID, Title, rLocation, Instructor, Website, rDescription FROM projects";
+                            $sql = "SELECT ID, Title, rLocation, Instructor, Website, rDescription, Tags FROM projects";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
+                                    
+                                    $tagarray = str_split($row["Tags"]);
+                                    $newarray = "";
+                                    foreach ($tagarray as $char) {
+                                        if(($char == "/" || $char == "#") && in_array($newarray, $tag)){
+                                            writeProject($row);
+                                            break;
+                                        }
+                                        else if($char == "/" && !in_array($newarray, $tag)){
+                                            $newarray = "";
+                                            continue;
+                                        }
+                                        $newarray .= $char;
+                                    }
+                                }    
+                            }
+                            
+                            function writeProject($row){
                         ?>
-                                    <div class=project>
-                                        <h style="font-size: xx-large;">
+                            <div class=project>
+                                <h style="font-size: xx-large;">
                         <?php
-                                    echo $row["Title"]
+                                echo $row["Title"]
                         ?>
-                                        </h>
-                                        <p>Location:
+                                </h>
+                                <p>Location:
                         <?php
-                                        echo $row["rLocation"]
+                                echo $row["rLocation"]
                         ?>
-                                        </p>
-                                        <p>Instructor:
+                                </p>
+                                <p>Instructor:
                         <?php
-                                        echo $row["Instructor"]
+                                echo $row["Instructor"]
                         ?>
-                                        </p>
-                                        <p>Website:
+                                </p>
+                                <p>Website:
                         <?php
-                                        echo $row["Website"]
+                                echo $row["Website"]
                         ?>
-                                        </p>
-                                        <p>
+                                </p>
+                                <p>
                         <?php
-                                        echo $row["rDescription"]
+                                echo $row["rDescription"]
                         ?>
-                                        </p>
-                                    </div>
-                        <?php            
+                                </p>
+                                <p>Tags:
+                        <?php
+                                $array = str_split($row["Tags"]);
+                                foreach ($array as $char) {
+                                    if($char == "/"){
+                                        echo ", ";
+                                        continue;
+                                    }
+                                    if($char == "#") {
+                                        break;
+                                    }
+                                    echo $char;
                                 }
+                        ?>
+                                </p>
+                            </div>
+                        <?php            
                             }
                         ?>
                 </div>
