@@ -139,7 +139,7 @@
             }
 
             .feedcontainer {
-                margin-top: 40px;
+                /*margin-top: 40px;*/
                 width: 100%;
                 height: auto;
             }
@@ -162,7 +162,7 @@
         <div class="topnav">
             <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left">
             <div class="search-container">
-                <form action="search.php">
+                <form action="search.php" method="post">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="material-icons" style="color:#05386B; float:left">search</i></button>
                 </form>
@@ -182,11 +182,11 @@
                 <div class="network">Network</div>
             </div>
             <div class="contentcontainer">
-                <div class=newscontainer>
+                <!--<div class=newscontainer>
                     <div class=news style="padding: 5px">News</div>
                     <div class=news style="padding: 5px; margin-left: 35px">Scientific Papers</div>
                     <div class=news style="padding: 5px; margin-left: 35px">Top Universities</div>
-                </div>
+                </div>-->
                 <div class=feedcontainer>
                         <?php
 
@@ -194,7 +194,7 @@
                             $pass = '';
                             $db = 'projects';
 
-                            $tag = array("arthist", "econ", "cmpsci");
+                            $tag = array("cmpsci", "econ");
 
                             ?>
                                 <div class=project>
@@ -215,21 +215,17 @@
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
-                                    
-                                    $tagarray = str_split($row["Tags"]);
-                                    $newarray = "";
-                                    foreach ($tagarray as $char) {
-                                        if(($char == "/" || $char == "#") && in_array($newarray, $tag)){
-                                            writeProject($row);
-                                            break;
-                                        }
-                                        else if($char == "/" && !in_array($newarray, $tag)){
-                                            $newarray = "";
-                                            continue;
-                                        }
-                                        $newarray .= $char;
-                                    }
+                                    testtags($row, $tag);
                                 }    
+                            }
+
+                            function testtags($row, $tag){
+                                foreach ($tag as $temp) {
+                                    if(strpos($row["Tags"], $temp) !== false){
+                                        writeProject($row);
+                                        break;
+                                    }
+                                }
                             }
                             
                             function writeProject($row){
@@ -251,9 +247,11 @@
                         ?>
                                 </p>
                                 <p>Website:
+                                <a href="<?php echo $row["Website"] ?>">
                         <?php
                                 echo $row["Website"]
                         ?>
+                                </a>
                                 </p>
                                 <p>
                         <?php
