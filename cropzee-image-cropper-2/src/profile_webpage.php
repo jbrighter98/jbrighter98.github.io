@@ -170,15 +170,15 @@
 		}
 
 		input[type="file"] {
-        position: absolute;
-        /*z-index: -1;*/
+        /*position: absolute;*/
+        /*z-index: -1;
         top: 38%;
-        left: 2%;
+        left: 2%;*/
         font-size: 17px;
         color: transparent;
-				width: 7.5%;
-				height: 2%;
-				visibility: hidden;
+		/*width: 7.5%;*/
+		height: 2%;
+		visibility: hidden;
       }
 
 			.upload {
@@ -215,63 +215,110 @@
 <hr class="sexy_line" color="#05386B">
 
 </br>
+<form action="" align="middle" method="post" enctype="multipart/form-data">
+		<pre class="tab"></pre>
+		<label for="cropzee-input" class="image-previewer" data-cropzee="cropzee-input" style="background: #05386B"></label>
+		<input id="cropzee-input" name="image" type="file" accept="image/*" style="margin-left: 70px; padding: 10px 0px; float: left;"/>
+		<input type="button" value="Upload Image" class="upload" onclick="document.getElementById('cropzee-input').click()"/>
+		<!--<button type="button" style="top: 20px; left: 10%; padding: 10px 20px; font-size: 12px; color: white; background-image: radial-gradient(#05386B 5%, #031C36); border: none; cursor: pointer; font-family: Menlo;"><label for="file" style="cursor: pointer;">Upload Image</label></button>
+		<button onclick="cropzeeGetImage('cropzee-input')">Get Image (as blob / data-url)</button>-->
+		<script>
+			$(document).ready(function(){
+				$("#cropzee-input").cropzee({startSize: [85, 85, '%'],});
+			});
+		</script>
 
-	<pre class="tab"></pre>
-
-	<label for="cropzee-input" class="image-previewer" data-cropzee="cropzee-input" style="background: #05386B"></label>
-	<input id="cropzee-input" type="file" accept="image/*" style="margin-left: 70px; padding: 10px 0px; float: left;"/>
-	<input type="button" value="Upload Image" class="upload" onclick="document.getElementById('cropzee-input').click()"/>
-	<!--<button type="button" style="top: 20px; left: 10%; padding: 10px 20px; font-size: 12px; color: white; background-image: radial-gradient(#05386B 5%, #031C36); border: none; cursor: pointer; font-family: Menlo;"><label for="file" style="cursor: pointer;">Upload Image</label></button>
-	<button onclick="cropzeeGetImage('cropzee-input')">Get Image (as blob / data-url)</button>-->
-	<script>
-		$(document).ready(function(){
-			$("#cropzee-input").cropzee({startSize: [85, 85, '%'],});
-		});
-	</script>
-
-</br>
-</br>
 
 <!--<div id="wrapperDiv">-->
 
-						<form action="profile.inc.php" align="middle" method="post"> <!--action="login.php"-->
-							<input type="text" id="uname" name="name" placeholder="Name" style="color: #FFFFFF;"  onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
+	<!--<form action="" align="middle" method="post" enctype="multipart/form-data"> <!--action="login.php"-->
+		<input type="text" id="uname" name="name" placeholder="Name" style="color: #FFFFFF;"  onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
 
-						</br>
+		</br>
 
-						<div>
-													<input type="text" id="email" name="email" placeholder="Email" style="color: #FFFFFF;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
-						</br>
-													<!--<input type="text" id="year" name="year" placeholder="Academic Standing" style="color: #FFFFFF" onfocus="this.placeholder = ''">-->
-								<select id="select" name="year" style="width: 75%; padding: 5px; font-size: 17px; font-family: Menlo; color: white; background-image: radial-gradient(#05386B 5%, #031C36);">
-									<option hidden="">Academic Standing</option>
-									<option value="Freshman">Freshman</option>
-									<option value="Sophomore">Sophomore</option>
-									<option value="Junior">Junior</option>
-									<option value="Senior">Senior</option>
-								</select>
-						</br>
+		<div>
+		<input type="text" id="email" name="email" placeholder="Email" style="color: #FFFFFF;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
+		</br>
+									<!--<input type="text" id="year" name="year" placeholder="Academic Standing" style="color: #FFFFFF" onfocus="this.placeholder = ''">-->
+		<select id="select" name="year" style="width: 75%; padding: 5px; font-size: 17px; font-family: Menlo; color: white; background-image: radial-gradient(#05386B 5%, #031C36);">
+			<option hidden="">Academic Standing</option>
+			<option value="Freshman">Freshman</option>
+			<option value="Sophomore">Sophomore</option>
+			<option value="Junior">Junior</option>
+			<option value="Senior">Senior</option>
+		</select>
+		</br>
 
-										<input type="text" id="major" name="major" placeholder="Major" style="color: #FFFFFF;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
-						</br>
+		<input type="text" id="major" name="major" placeholder="Major" style="color: #FFFFFF;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
+		</br>
 
-						<textarea cols="40" rows="5" maxlength="200" id="aoi" name="aoi" placeholder="Research Area(s) Of Interest" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
+		<textarea cols="40" rows="5" maxlength="200" id="aoi" name="aoi" placeholder="Research Area(s) Of Interest" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
 
-						</br>
+		</br>
 
-						<textarea cols="40" rows="5" maxlength="200" id="career" name="career" placeholder="Career Ambitions" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
+		<textarea cols="40" rows="5" maxlength="200" id="career" name="career" placeholder="Career Ambitions" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
 
-						</br>
+		</br>
 
-						<textarea cols="40" rows="5" maxlength="200" id="reason" name="reason" placeholder="Reasons For Wanting to do Research" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
+		<textarea cols="40" rows="5" maxlength="200" id="reason" name="reason" placeholder="Reasons For Wanting to do Research" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
 
-													<input type="submit" name="submit" value="Make Changes" size="50">
-						<!--<button>Submit</button>-->
-												</form>
+		<!--</br>
+		<input type="file" name="uploadimage" id="uploadimage">
+		</br></br>-->
+
+		<input type="submit" name="submit" value="Make Changes" size="50">
+
+	<?php
 
 
-						<!--<div class="square" id="wrapperDiv">
-						</div>-->
+	if(isset($_POST['submit'])){
+
+		$dbServername = "localhost";
+		$dbUsername = "root";
+		$dbPassword = "";
+		$dbName = "student_profile";
+
+		$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword);
+		mysqli_select_db($conn, $dbName);
+
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$year = $_POST['year'];
+		$major = $_POST['major'];
+		$aoi = $_POST['aoi'];
+		$career = $_POST['career'];
+		$reason = $_POST['reason'];
+
+		$sql = "INSERT INTO students (name1, email, years, major, aoi, career, reason)
+			VALUES ('$name', '$email', '$year', '$major', '$aoi', '$career', '$reason');";
+		$res = mysqli_query($conn, $sql);
+		if ($res) {                                                                
+			echo "<br/>Info uploaded.";                                                
+		} else {
+			echo "<br/>Info not uploaded.";                                            
+		}
+
+		$image1 = addslashes(file_get_contents($_FILES['image']['name']));                          # Add slashes to certain characters in the strings of the images temporary name (useful when entering stings into a database).
+		$name1 = addslashes($_FILES['image']['name']);                               # Add slashes to the images actual name.
+                
+		$qry = "INSERT INTO images (name1, image1, email) VALUES ('$name1', '$image1', '$email')";         
+																				
+		$result = mysqli_query($conn, $qry);                                                                                                                              
+		if ($result) {                                                                
+			echo "<br/>Image uploaded.";                                                
+		} else {
+			echo "<br/>Image not uploaded.";                                            
+		}
+
+		$_SESSION["email"] = $email;
+
+		//header("Location: profile_post.php");
+
+	}
+	?>
+
+	</form>
+
 
 </body>
 </html>
