@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,42 +120,6 @@ nav ul li a:hover {
 </head>
 <body>
 
-<?php
-
-/*$conn = mysqli_connect("localhost", "root", "");
-mysqli_select_db($conn, "reg");
-if(isset($_REQUEST['submit']))
-{
-  $name = $_REQUEST['name'];
-  $email = $_REQUEST['email'];
-  $year = $_REQUEST['year'];
-  $major = $_REQUEST['major'];
-  $aoi = $_REQUEST['aoi'];
-  $career = $_REQUEST['career'];
-  $reason = $_REQUEST['reason'];
-  mysqli_query($conn, "insert into profile(name, email, major, aoi, career, reason, year)values('$name', '$email', '$major', '$aoi', '$career', '$reason', '$year')");
-}*/
-
-if(isset($_POST['submit'])) {
-  $name = $_POST['name'];
-  $email = $_POST['email'];
-  $year = $_POST['year'];
-  $major = $_POST['major'];
-  $aoi = $_POST['aoi'];
-  $career = $_POST['career'];
-  $reason = $_POST['reason'];
-
-
-  /*echo "Name: ".$name."<br>";*/
-  /*echo "Email: ".$email."<br>";*/
-  /*echo "Year: ".$year."<br>";*/
-  /*echo "Major: ".$major."<br>";*/
-  /*echo "Area of Interest: ".$aoi."<br>";*/
-  /*echo "Career Interests: ".$career."<br>";*/
-  /*echo "Reasons for Wanting Research: ".$reason;*/
-}
-?>
-
 <nav>
     <ul>
     <!--<a href="file:///Users/jason/Desktop/Manuelshomepage.html">-->
@@ -165,19 +133,6 @@ if(isset($_POST['submit'])) {
 
 <hr class="sexy_line" color="#05386B">
 
-<!--<pre class="tab"></pre>
-<label for="cropzee-input" class="image-previewer" data-cropzee="cropzee-input" style="background: #05386B"></label>
-<input id="cropzee-input" type="file" accept="image/*" name="image" style="margin-left: 70px; padding: 10px 0px; float: left;"/>
-<input type="button" name="image" value="Upload Image" class="upload" onclick="document.getElementById('cropzee-input').click()"/>
-<script>
-  $(document).ready(function(){
-    $("#cropzee-input").cropzee({startSize: [85, 85, '%'],});
-
-  });
-
-</script>-->
-
-
     <div class=container>
 
       <?php
@@ -186,38 +141,23 @@ if(isset($_POST['submit'])) {
       $pass = '';
       $db = 'student_profile';
 
-      //$email = $_SESSION["email"];
-      $email = "testemail@gmail.com";
+      $email = $_SESSION["email"];
+
 
       $conn = mysqli_connect('localhost',$user,$pass) or die("Unable to connect");
       mysqli_select_db($conn, $db) or die("Unable to connect to db");
 
-      $sql1 = "SELECT name1, email, years, major, aoi, career, reason FROM students";
-      $sql = "SELECT name1, image1, email FROM images";
-
-      $sth = $conn->query($sql);
-      //$result = mysqli_fetch_array($sth);
-      if ($sth->num_rows > 0) {
-        while($row = $sth->fetch_assoc()) {
-          if ($row["email"] == $email) {
+      $sql1 = "SELECT name1, email, years, major, aoi, career, reason, imageName, image1 FROM students WHERE email='$email'";
+ 
+      $sth = $conn->query($sql1);
+      if ($sth->num_rows == 1) {
+        $row = $sth->fetch_assoc();
       ?>
             <p>
       <?php
             echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="200" height="200" />';
       ?>
             </p>
-      <?php
-            break;
-          }
-        }
-      }
-
-      $result1 = $conn->query($sql1);
-
-      if ($result1->num_rows > 0) {
-        while($row = $result1->fetch_assoc()) {
-          if ($row["email"] == $email) {
-      ?>
             <p>
       <?php
             echo $row["name1"];
@@ -254,9 +194,6 @@ if(isset($_POST['submit'])) {
       ?>
             </p>
       <?php
-            break;
-          }
-        }
       }
       ?>
 

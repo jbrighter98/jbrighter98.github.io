@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -218,68 +222,48 @@
 <hr class="sexy_line" color="#05386B">
 
 </br>
+		<form action="prof_profile.inc.php" align="middle" method="post" enctype="multipart/form-data"> <!--action="profile_post.php"-->
+			<pre class="tab"></pre>
 
-	<pre class="tab"></pre>
+			<label for="cropzee-input" class="image-previewer" data-cropzee="cropzee-input" style="background: #05386B"></label>
+			<input id="cropzee-input" name="image" type="file" accept="image/*" style="margin-left: 70px; padding: 10px 0px; float: left;"/>
+			<input type="button" value="Upload Image" class="upload" onclick="document.getElementById('cropzee-input').click()"/>
+			<!--<button type="button" style="top: 20px; left: 10%; padding: 10px 20px; font-size: 12px; color: white; background-image: radial-gradient(#05386B 5%, #031C36); border: none; cursor: pointer; font-family: Menlo;"><label for="file" style="cursor: pointer;">Upload Image</label></button>
+			<button onclick="cropzeeGetImage('cropzee-input')">Get Image (as blob / data-url)</button>-->
+			<script>
+				$(document).ready(function(){
+					$("#cropzee-input").cropzee({startSize: [85, 85, '%'],});
+				});
+			</script>
 
-	<label for="cropzee-input" class="image-previewer" data-cropzee="cropzee-input" style="background: #05386B"></label>
-	<input id="cropzee-input" type="file" accept="image/*" style="margin-left: 70px; padding: 10px 0px; float: left;"/>
-	<input type="button" value="Upload Image" class="upload" onclick="document.getElementById('cropzee-input').click()"/>
-	<!--<button type="button" style="top: 20px; left: 10%; padding: 10px 20px; font-size: 12px; color: white; background-image: radial-gradient(#05386B 5%, #031C36); border: none; cursor: pointer; font-family: Menlo;"><label for="file" style="cursor: pointer;">Upload Image</label></button>
-	<button onclick="cropzeeGetImage('cropzee-input')">Get Image (as blob / data-url)</button>-->
-	<script>
-		$(document).ready(function(){
-			$("#cropzee-input").cropzee({startSize: [85, 85, '%'],});
-		});
-	</script>
+			<input type="text" id="uname" name="name" placeholder="Name" style="color: #FFFFFF;"  onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
 
-</br>
-</br>
+			</br>
 
-<div id="wrapperDiv">
+			<div>
+			<input type="text" id="email" name="email" placeholder="Email" style="color: #FFFFFF;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
+			</br>
 
-						<form action="includes/professor_profile.inc.php" align="middle" method="POST"> <!--action="profile_post.php"-->
-							<input type="text" id="uname" name="name" placeholder="Name" style="color: #FFFFFF;"  onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
+			<input type="text" id="expertise" name="expertise" placeholder="Expertise/Courses You Teach" style="color: #FFFFFF;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
+			</br>
 
-						</br>
-
-						<div>
-													<input type="text" id="email" name="email" placeholder="Email" style="color: #FFFFFF;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
-						</br>
-													<!--<input type="text" id="year" name="year" placeholder="Academic Standing" style="color: #FFFFFF" onfocus="this.placeholder = ''">-->
-								<!--<select id="select" name="year" style="width: 75%; padding: 5px; font-size: 17px; font-family: Menlo; color: white; background-image: radial-gradient(#05386B 5%, #031C36);">
-									<option hidden="">Academic Standing</option>
-									<option value="Freshman">Freshman</option>
-									<option value="Sophomore">Sophomore</option>
-									<option value="Junior">Junior</option>
-									<option value="Senior">Senior</option>
-								</select>
-						</br>-->
-
-										<input type="text" id="expertise" name="expertise" placeholder="Expertise/Courses You Teach" style="color: #FFFFFF;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
-						</br>
-
-          <textarea cols="40" rows="5" maxlength="1000" id="background" name="background" placeholder="Education Background" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
+			<textarea cols="40" rows="5" maxlength="1000" id="background" name="background" placeholder="Education Background" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
 
 
-						<textarea cols="40" rows="5" maxlength="1000" id="aoi" name="aoi" placeholder="Research Area(s) Of Interest" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
+			<textarea cols="40" rows="5" maxlength="1000" id="aoi" name="aoi" placeholder="Research Area(s) Of Interest" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
 
-						</br>
+			</br>
 
-						<textarea cols="40" rows="5" maxlength="1000" id="projects" name="projects" placeholder="Current Projects" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
+			<textarea cols="40" rows="5" maxlength="1000" id="projects" name="projects" placeholder="Current Projects" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
 
-						</br>
+			</br>
 
-						<textarea cols="40" rows="5" maxlength="1000" id="research" name="research" placeholder="Research Goals" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
-          </br>
-          <textarea cols="40" rows="5" maxlength="1000" id="links" name="links" placeholder="Links to Your Website, Blog and/or Research Articles" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
+			<textarea cols="40" rows="5" maxlength="1000" id="research" name="research" placeholder="Research Goals" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
+			</br>
+			<textarea cols="40" rows="5" maxlength="1000" id="links" name="links" placeholder="Links to Your Website, Blog and/or Research Articles" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
 
-													<input type="submit" name="submit" value="Make Changes" size="50">
-						<!--<button>Submit</button>-->
-												</form>
+			<input type="submit" name="submit" value="Make Changes" size="50">
+		</form>
 
-
-						<!--<div class="square" id="wrapperDiv">
-						</div>-->
-
-</body>
+	</body>
 </html>

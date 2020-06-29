@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -215,7 +219,7 @@
 <hr class="sexy_line" color="#05386B">
 
 </br>
-<form action="" align="middle" method="post" enctype="multipart/form-data">
+	<form action="stu_profile.inc.php" align="middle" method="post" enctype="multipart/form-data">
 		<pre class="tab"></pre>
 		<label for="cropzee-input" class="image-previewer" data-cropzee="cropzee-input" style="background: #05386B"></label>
 		<input id="cropzee-input" name="image" type="file" accept="image/*" style="margin-left: 70px; padding: 10px 0px; float: left;"/>
@@ -228,10 +232,6 @@
 			});
 		</script>
 
-
-<!--<div id="wrapperDiv">-->
-
-	<!--<form action="" align="middle" method="post" enctype="multipart/form-data"> <!--action="login.php"-->
 		<input type="text" id="uname" name="name" placeholder="Name" style="color: #FFFFFF;"  onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
 
 		</br>
@@ -262,60 +262,7 @@
 
 		<textarea cols="40" rows="5" maxlength="200" id="reason" name="reason" placeholder="Reasons For Wanting to do Research" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: Menlo; color: white;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''></textarea>
 
-		<!--</br>
-		<input type="file" name="uploadimage" id="uploadimage">
-		</br></br>-->
-
 		<input type="submit" name="submit" value="Make Changes" size="50">
-
-	<?php
-
-
-	if(isset($_POST['submit'])){
-
-		$dbServername = "localhost";
-		$dbUsername = "root";
-		$dbPassword = "";
-		$dbName = "student_profile";
-
-		$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword);
-		mysqli_select_db($conn, $dbName);
-
-		$name = $_POST['name'];
-		$email = $_POST['email'];
-		$year = $_POST['year'];
-		$major = $_POST['major'];
-		$aoi = $_POST['aoi'];
-		$career = $_POST['career'];
-		$reason = $_POST['reason'];
-
-		$sql = "INSERT INTO students (name1, email, years, major, aoi, career, reason)
-			VALUES ('$name', '$email', '$year', '$major', '$aoi', '$career', '$reason');";
-		$res = mysqli_query($conn, $sql);
-		if ($res) {                                                                
-			echo "<br/>Info uploaded.";                                                
-		} else {
-			echo "<br/>Info not uploaded.";                                            
-		}
-
-		$image1 = addslashes(file_get_contents($_FILES['image']['name']));                          # Add slashes to certain characters in the strings of the images temporary name (useful when entering stings into a database).
-		$name1 = addslashes($_FILES['image']['name']);                               # Add slashes to the images actual name.
-                
-		$qry = "INSERT INTO images (name1, image1, email) VALUES ('$name1', '$image1', '$email')";         
-																				
-		$result = mysqli_query($conn, $qry);                                                                                                                              
-		if ($result) {                                                                
-			echo "<br/>Image uploaded.";                                                
-		} else {
-			echo "<br/>Image not uploaded.";                                            
-		}
-
-		$_SESSION["email"] = $email;
-
-		//header("Location: profile_post.php");
-
-	}
-	?>
 
 	</form>
 
