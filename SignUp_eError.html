@@ -34,7 +34,7 @@
 				font-family: Menlo;
 				color: #EFEFEF;
 			}
-			
+
             input[type=text], select {
                 Width:80%; /*<!--40%-->*/
 				Padding: 5px;
@@ -42,7 +42,7 @@
 				font-family: Menlo;
 				color: #EFEFEF;
             }
-
+			
 			</style>
 			
 		<link rel="stylesheet" type="text/css" href="newsignup2.css">
@@ -90,6 +90,12 @@
                 </select>
 
 				<input id="submit_button" type="submit" value="Sign Up" size="50" style="visibility: hidden;">
+                
+                <p>
+                <label for="submit_button" style="font-family: Menlo; color: red;" id="eError">
+                    Email address already used. Use a different email.
+                </label>
+                </p>
 
 				<script>
                     function field_wait(){
@@ -141,7 +147,7 @@
                             }
                         }
 
-                        if (pcheck == true && echeck == true && pcheck_size == true) {
+                        if (pcheck == true && echeck === true && pcheck_size == true) {
                             document.getElementById("submit_button").style.visibility = "visible";
                         }
                         else {

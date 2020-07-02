@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Quest - Sign Up</title>
+		<title>Quest - Login</title>
 		<style>
 			::-webkit-input-placeholder { 
 				color: #EFEFEF;
@@ -35,14 +35,6 @@
 				color: #EFEFEF;
 			}
 			
-            input[type=text], select {
-                Width:80%; /*<!--40%-->*/
-				Padding: 5px;
-				Font-size: 13px;
-				font-family: Menlo;
-				color: #EFEFEF;
-            }
-
 			</style>
 			
 		<link rel="stylesheet" type="text/css" href="newsignup2.css">
@@ -61,15 +53,14 @@
 
 		<hr class="sexy_line" color="#05386B">
 		
-		<p id="Sign-Up">Sign Up</p>
+		<p id="Login">Login</p>
 		
 		<div>
-			<form align="middle" action="SignUp_entry.php" method="POST" id="form1">	
-
+			<form align="middle" action="Login_entry.php" method="POST" id="form1">	
                 <input type="text" id="email" name="email" placeholder="Enter your Email" style="color: #FFFFFF" onkeypress="field_wait()">
                 
-                <label for="email" style="display: none; font-family: Menlo; color: red" id="errE">
-                    Enter a valid email address
+                <label for="uname" style="display: none; font-family: Menlo; color: red" id="errU">
+                    Username must be less than 20 characters.
                 </label>
 
                 <input type="password" id="pword" name="pword" placeholder="Create a Password" style="color: #FFFFFF" onkeypress="field_wait()">
@@ -78,18 +69,13 @@
                     Password must be less than 100 characters.
                 </label>
 
-                <input type="password" id="cword" name="cword" placeholder="Confirm Password" style="color: #FFFFFF" onkeypress="field_wait()"v>
+                <input id="submit_button" type="submit" value="Login" size="50" style="visibility: hidden;">
                 
-                <label for="cword" style="display: none; font-family: Menlo; color: red" id="errC">
-                    Password fields must match.
+                <p>
+                <label for="submit_button" style="font-family: Menlo; color: red;" id="lError">
+                    Email or password is incorrect.
                 </label>
-
-                <select id="select" name="type" style="width: 75%; padding: 5px; font-size: 17px; font-family: Menlo; color: white; background-image: radial-gradient(#05386B 5%, #031C36);">
-                    <option value="Student" style="color: #05386B">Student</option>
-                    <option value="Professor" style="color: #05386B">Professor</option>
-                </select>
-
-				<input id="submit_button" type="submit" value="Sign Up" size="50" style="visibility: hidden;">
+                </p>
 
 				<script>
                     function field_wait(){
@@ -97,51 +83,38 @@
                     }
                     function field_checker() {
                         var p = document.getElementById("pword").value;
-                        var c = document.getElementById("cword").value;
                         var e = document.getElementById("email").value;
 
                         var pcheck = false;
-                        var pcheck_size = false;
                         var echeck = false;
 
-                        if(p.length != 0 && c.length != 0){
-                            if(c != p) {
-                                document.getElementById("errC").style.display = "block";
+                        if(p.length != 0){
+                            if(p.length >= 100){
+                                document.getElementById("errP").style.display = "block";
                                 document.getElementById("form1").style.height = "320px";
                                 pcheck = false;
                             }
                             else{
-                                document.getElementById("errC").style.display = "none";
+                                document.getElementById("errP").style.display = "none";
                                 document.getElementById("form1").style.height = "300px";
                                 pcheck = true;
                             }
-                            if(p.length >= 100 || c.length >= 100){
-                                document.getElementById("errP").style.display = "block";
-                                document.getElementById("form1").style.height = "320px";
-                                pcheck_size = false;
-                            }
-                            else{
-                                document.getElementById("errP").style.display = "none";
-                                document.getElementById("form1").style.height = "300px";
-                                pcheck_size = true;
-                            }
                         }
 
-
                         if(e.length != 0) {
-                            if(!e.includes("@") || !e.includes(".")){
-                                document.getElementById("errE").style.display = "block";
+                            if(e.length >= 20) {
+                                document.getElementById("errU").style.display = "block";
                                 document.getElementById("form1").style.height = "320px";
                                 echeck = false;
                             }
-                            else{
-                                document.getElementById("errE").style.display = "none";
+                            else {
+                                document.getElementById("errU").style.display = "none";
                                 document.getElementById("form1").style.height = "300px";
                                 echeck = true;
                             }
                         }
 
-                        if (pcheck == true && echeck == true && pcheck_size == true) {
+						if (pcheck == true && echeck == true) {
                             document.getElementById("submit_button").style.visibility = "visible";
                         }
                         else {

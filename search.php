@@ -119,12 +119,9 @@
         <div class="topnav">
             <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left;">
             <a href="home_page.php">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="labs.html">Labs</a>
-            <a href="professors.html">Professors</a>
-            <a href="people.html">People</a>
-            <a href="messages.html" style="float:right">Messages</a>
-            <a href="notifications.html" style="float:right">Notifications</a>
+            <a href="portfolio_edit.php">Portfolio</a>
+            <a href="cropzee-image-cropper-2/src/stu_profile_post.php" style="float:right">Profile</a>
+
         </div>
 
         <div class="center">

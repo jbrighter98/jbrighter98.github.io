@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -168,17 +172,76 @@
                 </form>
             </div>
             <a href="home_page.php">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="labs.html">Labs</a>
-            <a href="professors.html">Professors</a>
-            <a href="people.html">People</a>
-            <a href="messages.html" style="float:right">Messages</a>
-            <a href="notifications.html" style="float:right">Notifications</a>
+            <a href="portfolio_edit.php">Portfolio</a>
+            <a href="cropzee-image-cropper-2/src/stu_profile_post.php" style="float:right">Profile</a>
         </div>
 
         <div class="center">
             <div class="sidecontainer">
-                <div class="self" style="margin-bottom: 5px;">Name</div>
+                <div class="self" style="margin-bottom: 5px;">Name
+                <?php
+
+                $user = 'root';
+                $pass = '';
+                $db = 'student_profile';
+
+                $email = $_SESSION["email"];
+
+
+                $conn = mysqli_connect('localhost',$user,$pass) or die("Unable to connect");
+                mysqli_select_db($conn, $db) or die("Unable to connect to db");
+
+                $sql1 = "SELECT name1, email, years, major, aoi, career, reason, imageName, image1 FROM students WHERE email='$email'";
+                echo "here";
+                $sth = mysqli_query($conn, $sql1);
+                if (mysqli_num_rows($sth) == 1) {
+                echo "</br>got here";
+                $row = $sth->fetch_assoc();
+                ?>
+                    <p>
+                <?php
+                    echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="100" height="100" />';
+                ?>
+                    </p>
+                    <p>
+                <?php
+                    echo $row["name1"];
+                ?>
+                    </p>
+                    <p>
+                <?php
+                    echo $row["email"];
+                ?>
+                    </p>
+                    <p>
+                <?php
+                    echo $row["years"];
+                ?>
+                    </p>
+                    <p>
+                <?php
+                    echo $row["major"];
+                ?>
+                    </p>
+                    <p>
+                <?php
+                    echo $row["aoi"];
+                ?>
+                    </p>
+                    <p>
+                <?php
+                    echo $row["career"];
+                ?>
+                    </p>
+                    <p>
+                <?php
+                    echo $row["reason"];
+                ?>
+                    </p>
+                <?php
+                }
+                ?>
+                </div>
                 <div class="network">Network</div>
             </div>
             <div class="contentcontainer">

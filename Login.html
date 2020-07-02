@@ -56,20 +56,20 @@
 		<p id="Login">Login</p>
 		
 		<div>
-			<form align="middle" action="home_page.php" method="POST" id="form1">	
-                <input type="text" id="uname" name="username" placeholder="Enter your Username" style="color: #FFFFFF" onkeypress="field_wait()">
+			<form align="middle" action="Login_entry.php" method="POST" id="form1">	
+                <input type="text" id="email" name="email" placeholder="Enter your Email" style="color: #FFFFFF" onkeypress="field_wait()">
                 
                 <label for="uname" style="display: none; font-family: Menlo; color: red" id="errU">
                     Username must be less than 20 characters.
                 </label>
 
-                <input type="password" id="pword" name="password" placeholder="Create a Password" style="color: #FFFFFF" onkeypress="field_wait()">
+                <input type="password" id="pword" name="pword" placeholder="Enter your Password" style="color: #FFFFFF" onkeypress="field_wait()">
                 
                 <label for="pword" style="display: none; font-family: Menlo; color: red" id="errP">
                     Password must be less than 100 characters.
                 </label>
 
-				<input type="submit" value="Sign Up" size="50">
+				<input id="submit_button" type="submit" value="Login" size="50" style="visibility: hidden;">
 
 				<script>
                     function field_wait(){
@@ -77,10 +77,10 @@
                     }
                     function field_checker() {
                         var p = document.getElementById("pword").value;
-                        var u = document.getElementById("uname").value;
+                        var e = document.getElementById("email").value;
 
                         var pcheck = false;
-                        var ucheck = false;
+                        var echeck = false;
 
                         if(p.length != 0){
                             if(p.length >= 100){
@@ -95,18 +95,26 @@
                             }
                         }
 
-                        if(u.length != 0) {
-                            if(u.length >= 20) {
+                        if(e.length != 0) {
+                            if(e.length >= 20) {
                                 document.getElementById("errU").style.display = "block";
                                 document.getElementById("form1").style.height = "320px";
-                                ucheck = false;
+                                echeck = false;
                             }
                             else {
                                 document.getElementById("errU").style.display = "none";
                                 document.getElementById("form1").style.height = "300px";
-                                ucheck = true;
+                                echeck = true;
                             }
                         }
+
+						if (pcheck == true && echeck == true) {
+                            document.getElementById("submit_button").style.visibility = "visible";
+                        }
+                        else {
+                            document.getElementById("submit_button").style.visibility = "hidden";
+                        }
+
                     }
                 </script>
 
