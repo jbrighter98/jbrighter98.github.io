@@ -6,7 +6,6 @@ include_once 'stu_dbh.inc.php';
 $email = $_SESSION["email"];
 
 $name = $_POST['name'];
-$email = $_POST['email'];
 $year = $_POST['year'];
 $major = $_POST['major'];
 $aoi = $_POST['aoi'];
