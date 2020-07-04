@@ -138,7 +138,9 @@ hr.sexy_line {
             </div>
             <a href="home_page.php">PROJECTS</a>
             <a href="portfolio_edit.php">PORTFOLIO</a>
-            <a id="profile-link" href="cropzee-image-cropper-2/src/stu_profile_post.php">PROFILE</a>
+            <a id="profile-link" href="logout.php">LOGOUT</a>
+            <a id="profile-link" href="profile_choose.php">PROFILE</a>
+
         </div>
 
 
@@ -198,14 +200,14 @@ hr.sexy_line {
 
 <?php 
     $db = mysqli_connect("localhost", "root", "", "student_profile");
-    $sql = "SELECT * FROM portfolios1 ORDER BY id desc limit 1";
+    $sql = "SELECT * FROM portfolios1 WHERE email='$email'";
     $result = mysqli_query($db, $sql);
-    while ($row = mysqli_fetch_array($result)) {
-        //echo "<div id='img_div'>";
-            echo "<img class='projects' src='images/".$row['images']."' >";
-            echo "<p>".$row['rDescription']."</p>"; 
-        //echo "</div>";
+    $row = mysqli_fetch_array($result);
+    if($row) {
+        echo "<img class='projects' src='images/".$row['images']."' >";
+        echo "<p>".$row['rDescription']."</p>"; 
     }
+
 ?>
 
 </div>
@@ -253,14 +255,14 @@ if (isset($_POST['upload2'])) {
 
 <?php 
 $db = mysqli_connect("localhost", "root", "", "student_profile");
-$sql = "SELECT * FROM portfolios2 ORDER BY id desc limit 1";
+$sql = "SELECT * FROM portfolios2 WHERE email='$email'";
 $result = mysqli_query($db, $sql);
-while ($row = mysqli_fetch_array($result)) {
-    //echo "<div id='img_div'>";
-        echo "<img class='projects' src='images/".$row['images']."' >";
-        echo "<p>".$row['rDescription']."</p>"; 
-    //echo "</div>";
+$row = mysqli_fetch_array($result);
+if($row) {
+    echo "<img class='projects' src='images/".$row['images']."' >";
+    echo "<p>".$row['rDescription']."</p>"; 
 }
+
 ?>
 
 </div>
@@ -345,13 +347,12 @@ if (isset($_POST['upload3'])) {
 
 <?php 
 $db = mysqli_connect("localhost", "root", "", "student_profile");
-$sql = "SELECT * FROM portfolios3 ORDER BY id desc limit 1";
+$sql = "SELECT * FROM portfolios3 WHERE email='$email'";
 $result = mysqli_query($db, $sql);
-while ($row = mysqli_fetch_array($result)) {
-    //echo "<div id='img_div'>";
-        echo "<img class='projects' src='images/".$row['images']."' >";
-        echo "<p>".$row['rDescription']."</p>"; 
-    //echo "</div>";
+$row = mysqli_fetch_array($result);
+if($row) {
+    echo "<img class='projects' src='images/".$row['images']."' >";
+    echo "<p>".$row['rDescription']."</p>"; 
 }
 ?>
 
@@ -400,13 +401,12 @@ if (isset($_POST['upload5'])) {
 
 <?php 
 $db = mysqli_connect("localhost", "root", "", "student_profile");
-$sql = "SELECT * FROM portfolios4 ORDER BY id desc limit 1";
+$sql = "SELECT * FROM portfolios4 WHERE email='$email'";
 $result = mysqli_query($db, $sql);
-while ($row = mysqli_fetch_array($result)) {
-    //echo "<div id='img_div'>";
-        echo "<img class='projects' src='images/".$row['images']."' >";
-        echo "<p>".$row['rDescription']."</p>"; 
-    //echo "</div>";
+$row = mysqli_fetch_array($result);
+if($row) {
+    echo "<img class='projects' src='images/".$row['images']."' >";
+    echo "<p>".$row['rDescription']."</p>"; 
 }
 ?>
 

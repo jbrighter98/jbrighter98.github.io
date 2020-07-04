@@ -12,6 +12,10 @@ $dbName = "user_info";
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword) or die("no connection");
 mysqli_select_db($conn, $dbName) or die("no db");
 
+if(!$conn){
+    header("Location: general_error_page.html");
+}
+
 $sql1 = "SELECT email, pword FROM users WHERE email = '$email'";
 $res = mysqli_query($conn, $sql1);
 $row = $res->fetch_assoc();

@@ -173,7 +173,8 @@ session_start();
             </div>
             <a href="home_page.php">Home</a>
             <a href="portfolio_edit.php">Portfolio</a>
-            <a href="cropzee-image-cropper-2/src/stu_profile_post.php" style="float:right">Profile</a>
+            <a href="logout.php" style="float:right">Logout</a>
+            <a href="profile_choose.php" style="float:right">Profile</a>
         </div>
 
         <div class="center">
@@ -192,53 +193,105 @@ session_start();
                 mysqli_select_db($conn, $db) or die("Unable to connect to db");
 
                 $sql1 = "SELECT name1, email, years, major, aoi, career, reason, imageName, image1 FROM students WHERE email='$email'";
-                echo "here";
                 $sth = mysqli_query($conn, $sql1);
                 if (mysqli_num_rows($sth) == 1) {
-                echo "</br>got here";
-                $row = $sth->fetch_assoc();
-                ?>
-                    <p>
-                <?php
-                    echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="100" height="100" />';
-                ?>
-                    </p>
-                    <p>
-                <?php
-                    echo $row["name1"];
-                ?>
-                    </p>
-                    <p>
-                <?php
-                    echo $row["email"];
-                ?>
-                    </p>
-                    <p>
-                <?php
-                    echo $row["years"];
-                ?>
-                    </p>
-                    <p>
-                <?php
-                    echo $row["major"];
-                ?>
-                    </p>
-                    <p>
-                <?php
-                    echo $row["aoi"];
-                ?>
-                    </p>
-                    <p>
-                <?php
-                    echo $row["career"];
-                ?>
-                    </p>
-                    <p>
-                <?php
-                    echo $row["reason"];
-                ?>
-                    </p>
-                <?php
+                    $row = $sth->fetch_assoc();
+                    ?>
+                        <p>
+                    <?php
+                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="100" height="100" />';
+                    ?>
+                        </p>
+                        <p>
+                    <?php
+                        echo $row["name1"];
+                    ?>
+                        </p>
+                        <p>
+                    <?php
+                        echo $row["email"];
+                    ?>
+                        </p>
+                        <p>
+                    <?php
+                        echo $row["years"];
+                    ?>
+                        </p>
+                        <p>
+                    <?php
+                        echo $row["major"];
+                    ?>
+                        </p>
+                        <p>
+                    <?php
+                        echo $row["aoi"];
+                    ?>
+                        </p>
+                        <p>
+                    <?php
+                        echo $row["career"];
+                    ?>
+                        </p>
+                        <p>
+                    <?php
+                        echo $row["reason"];
+                    ?>
+                        </p>
+                    <?php
+                }else{
+                    mysqli_select_db($conn, "professor_profile") or die("Unable to connect to db");
+                    $sql1 = "SELECT name1, email, expertise, background, aoi, projects, research, links, imageName, image1 FROM professor WHERE email='$email'";
+                    $sth = mysqli_query($conn, $sql1);
+                    if (mysqli_num_rows($sth) == 1) {
+                        $row = $sth->fetch_assoc();
+                        ?>
+                            <p>
+                        <?php
+                            echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="100" height="100" />';
+                        ?>
+                            </p>
+                            <p>
+                        <?php
+                            echo $row["name1"];
+                        ?>
+                            </p>
+                            <p>
+                        <?php
+                            echo $row["email"];
+                        ?>
+                            </p>
+                            <p>
+                        <?php
+                            echo $row["expertise"];
+                        ?>
+                            </p>
+                            <p>
+                        <?php
+                            echo $row["background"];
+                        ?>
+                            </p>
+                            <p>
+                        <?php
+                            echo $row["aoi"];
+                        ?>
+                            </p>
+                            <p>
+                        <?php
+                            echo $row["projects"];
+                        ?>
+                            </p>
+                            <p>
+                        <?php
+                            echo $row["research"];
+                        ?>
+                            </p>
+                            <p>
+                        <?php
+                            echo $row["links"];
+                        ?>
+                            </p>
+                        <?php
+                    }
                 }
                 ?>
                 </div>

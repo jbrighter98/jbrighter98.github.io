@@ -120,7 +120,8 @@
             <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left;">
             <a href="home_page.php">Home</a>
             <a href="portfolio_edit.php">Portfolio</a>
-            <a href="cropzee-image-cropper-2/src/stu_profile_post.php" style="float:right">Profile</a>
+            <a href="logout.php" style="float:right">Logout</a>
+            <a href="profile_choose.php" style="float:right">Profile</a>
 
         </div>
 

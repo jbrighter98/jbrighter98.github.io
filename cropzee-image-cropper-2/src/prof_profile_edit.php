@@ -31,54 +31,62 @@ session_start();
 	  background-image: linear-gradient(#22FFAD 35%, rgb(13, 117, 79))
 	}
 
-	nav {
-	  width: 100%;
-	  height: 36px;
-	  background-color: #22FFAD;
-	}
+	.topnav a {
+    float: left;
+    display: block;
+    color:#05386B;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+#profile-link {
+    float: right;
+}  
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #05386B;
+    color:#25F09A;
+}
+/* Style the search box inside the navigation bar */
+.topnav input[type=text] {
+    float: left;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+.topnav .search-container {
+      float:left;
+      border-right: 3px solid #05386B;
+      padding: 4px;
+      height: 40px;
+}
 
-	nav p {
-	  font-family: menlo;
-	  color: #22FFAD;
-	  font-size: 24px;
-	  line-height: 55px;
-	  float: right;
-	  padding: 0px 20px;
-	}
 
-	nav ul {
-	  float: right;
-	  list-style: none;
-	  text-align: center;
-	}
 
-	nav ul li {
-	  float: right;
-	  list-style: none;
-	  position: relative;
-	  top: 20px; /*10px*/
-	  right: 150px;
-	  display: inline-block;
-	  text-align: center;
-	  /*top: 2%;*/
-	  /*left: 20%;*/
-	  transform: translate(-50%, -50%);
-	}
+.topnav input[type=text] {
+      margin-top: 5px;
+      float: left;
+      padding: 6px;
+      font-size: 17px;
+      border: none;
+}
 
-	nav ul li a {
-	  display: block;
-	  font-family: menlo;
-	  color: #05386B;
-	  font-size: 16px;
-	  font-weight: regular;
-	  padding: 8px 15px; /* 8px 9px */
-	  text-decoration: none;
-	  file:///Users/jason/Desktop/Manuelshomepage.html;
-	}
+.topnav .search-container button {
+      float: left;
+      padding: 4px 5px;
+      margin-top: 5px;
+      background: #22FFAD;
+      font-size: 17px;
+      border: none;
+      cursor: pointer;
+}
 
-	nav ul li a:hover {
-	    text-decoration: underline;
-	  }
+.topnav .search-container button:hover {
+      background: #ddd;
+}
 
 		hr.sexy_line {
 		border: 0;
@@ -109,7 +117,7 @@ session_start();
 		 	color: #EFEFEF;
 		}
 
-		Form{
+		.form_cust{
 			float: center;
 			position: absolute;
 			left: 500px;
@@ -204,25 +212,30 @@ session_start();
 				cursor: pointer;
 			}
 
+	
+
 	</style>
 </head>
 <body>
 
-	<nav>
-	  	<ul>
-			<!--<a href="file:///Users/jason/Desktop/Manuelshomepage.html">-->
-			<a href="Manuelshomepage.html">
-			<img style="position: absolute; top:10px; left:150px; width:30px; height:15px color: #05386B" src="Qlogo2.png"></a> <!--WIDTH:60px; HEIGHT:30px-->
-			<!--<IMG STYLE="align: left; position:relative; TOP:10px; LEFT:10px; WIDTH:30px; HEIGHT:15px" SRC="Qlogo1.png"></a>-->
-	    		<li><a href="newsignup.html">Log Out</a></li>
-	    		<li><a href="file:///Users/jason/Desktop/Quest%20progress/Published%20Work/SignUp.html">Home</a></li>
-		</ul>
-	</nav>
+<div class="topnav">
+      <a onclick="window.location.href = 'quest_home.html'" class="top-logo"><img src="Qlogo1.png" id="toplogo" alt="Quest Logo Top" width = 45></a> 
+      <div class="search-container">
+            <form action="../../search.php" method="post">
+                  <input type="text" placeholder="Search.." name="search">
+                  <button type="submit"><i class="material-icons" style="color:#05386B; float:left">search</i></button>
+            </form>
+      </div>
+      <a href="../../home_page.php">PROJECTS</a>
+      <a href="../../portfolio_edit.php">PORTFOLIO</a>
+      <a id="profile-link" href="../../logout.php">LOGOUT</a>
+      <a id="profile-link" href="prof_profile_post.php">PROFILE</a>
+</div>
 
 <hr class="sexy_line" color="#05386B">
 
 </br>
-		<form action="prof_profile.inc.php" align="middle" method="post" enctype="multipart/form-data"> <!--action="profile_post.php"-->
+		<form class="form_cust" action="prof_profile.inc.php" align="middle" method="post" enctype="multipart/form-data"> <!--action="profile_post.php"-->
 			<pre class="tab"></pre>
 
 			<label for="cropzee-input" class="image-previewer" data-cropzee="cropzee-input" style="background: #05386B"></label>
@@ -238,10 +251,6 @@ session_start();
 
 			<input type="text" id="uname" name="name" placeholder="Name" style="color: #FFFFFF;"  onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
 
-			</br>
-
-			<div>
-			<input type="text" id="email" name="email" placeholder="Email" style="color: #FFFFFF;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
 			</br>
 
 			<input type="text" id="expertise" name="expertise" placeholder="Expertise/Courses You Teach" style="color: #FFFFFF;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>

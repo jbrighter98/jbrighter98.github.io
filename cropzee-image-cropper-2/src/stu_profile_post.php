@@ -138,6 +138,7 @@ body {
       </div>
       <a href="../../home_page.php">PROJECTS</a>
       <a href="../../portfolio_edit.php">PORTFOLIO</a>
+      <a id="profile-link" href="../../logout.php">LOGOUT</a>
       <a id="profile-link" href="stu_profile_post.php">PROFILE</a>
 </div>
       <br>
@@ -212,6 +213,8 @@ body {
       <?php
       }
       ?>
+      <button onclick="window.location.href='stu_profile_edit.php'">Edit</button>
+
 
     </div>
   </body>
