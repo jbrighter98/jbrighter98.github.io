@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if(!$_SESSION["email"]){
+    header("Location: Login.html");
+}
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,44 +13,10 @@
             Search
         </title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" type="text/css" href="style_page.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            body {
-            margin: 0;
-            font-family: menlo;
-            background-color: white;
-            }
-
-            .topnav {
-            overflow: hidden;
-            background-color: #22FFAD;
-            border-bottom: 3px solid #05386B;
-            }
-
-            .topnav a {
-            float: left;
-            color: #05386B;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-            }
-
-            .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-            }
-
-            .topnav a.active {
-            background-color: #05386B;
-            color: white;
-            }
-
-
-
-
-
-
+           
             .search-container {
                 text-align: center;
                 margin: auto;
@@ -74,13 +48,6 @@
             .center button:hover {
                 background: #ddd;
             }
-
-            
-
-
-
-
-
 
             .center {
                 margin-left: auto;
@@ -118,7 +85,7 @@
 
         <div class="topnav">
             <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left;">
-            <a href="home_page.php">Home</a>
+            <a href="home_page.php">Projects</a>
             <a href="portfolio_edit.php">Portfolio</a>
             <a href="logout.php" style="float:right">Logout</a>
             <a href="profile_choose.php" style="float:right">Profile</a>
@@ -128,14 +95,13 @@
         <div class="center">
             <form action="search.php" method="post">
                 <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="material-icons" style="color:#05386B; float:left">search</i></button>
+                <button type="submit" style="background-color: #d1d0ce"><i class="material-icons" style="color:#05386B; float:left">search</i></button>
             </form>
         </div>
         <div class="contentcontainer">
             <?php 
             
             $search = $_POST["search"];
-
             $user = 'root';
             $pass = '';
             $db = 'projects';
@@ -157,23 +123,28 @@
             <?php
             
             $count = 0;
-
-            if ($result->num_rows > 0) {
-                // output data of each row
-                while($row = $result->fetch_assoc()) {
-                    
-                    if(strpos(strtoupper($row["Title"]), strtoupper($search)) !== false || 
-                    strpos(strtoupper($row["rLocation"]), strtoupper($search)) !== false || 
-                    strpos(strtoupper($row["Instructor"]), strtoupper($search)) !== false || 
-                    strpos(strtoupper($row["Website"]), strtoupper($search)) !== false || 
-                    strpos(strtoupper($row["rDescription"]), strtoupper($search)) !== false || 
-                    strpos(strtoupper($row["Tags"]), strtoupper($search)) !== false) {
-                        $count += 1;
-                        writeProject($row);
-                    }
-                }    
+            if($search != ''){
+                if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                        
+                        if(strpos(strtoupper($row["Title"]), strtoupper($search)) !== false || 
+                        strpos(strtoupper($row["rLocation"]), strtoupper($search)) !== false || 
+                        strpos(strtoupper($row["Instructor"]), strtoupper($search)) !== false || 
+                        strpos(strtoupper($row["Website"]), strtoupper($search)) !== false || 
+                        strpos(strtoupper($row["rDescription"]), strtoupper($search)) !== false || 
+                        strpos(strtoupper($row["Tags"]), strtoupper($search)) !== false) {
+                            $count += 1;
+                            writeProject($row);
+                        }
+                    }    
+                }
             }
-
+            else{
+                echo "Empty Search";
+                $count = -1;
+            }
+            
             if($count == 0) {
                 echo "No search results for '$search'";
             }

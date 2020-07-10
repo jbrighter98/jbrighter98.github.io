@@ -1,161 +1,85 @@
 <?php
 session_start();
+
+if(!$_SESSION["email"]){
+    header("Location: Login.html");
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-        <title>Quest - Portfolio</title>
+        <title>
+            Quest - Portfolio
+        </title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" type="text/css" href="style_page.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            /* Style the links inside the navigation bar */
-.topnav a {
-    float: left;
-    display: block;
-    color:#05386B;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-#profile-link {
-    float: right;
-}  
-/* Change the color of links on hover */
-.topnav a:hover {
-    background-color: #05386B;
-    color:#25F09A;
-}
-/* Style the search box inside the navigation bar */
-.topnav input[type=text] {
-    float: left;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
-}
-/* Navigation line */
-hr.sexy_line {
-    border: 0;
-    height: 3px;
-    background: #05386B;
-    background-image: -webkit-linear-gradient(left, #22FFAD, #05386B, #22FFAD);
-    background-image: -moz-linear-gradient(left, #22FFAD, #05386B, #22FFAD);
-    background-image: -ms-linear-gradient(left, #22FFAD, #05386B, #22FFAD);
-    background-image: -o-linear-gradient(left, #22FFAD, #05386B, #22FFAD);
-    position: relative;
-    top: -5px;
-    }
 
-.maingrid {
-    display: grid;
-    border: none;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    grid-gap: 4px;
-}
-.box {
-    height: 300px;
-    border: 2px solid #031C36;
-    border-radius: 15px;
-    margin-left: 120px;
-    margin-right: 60px;
-}
-.fm {
-    border: none;
-}
+            .maingrid {
+                display: grid;
+                border: none;
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                grid-gap: 4px;
+            }
+            .box {
+                height: 300px;
+                border: 2px solid #031C36;
+                border-radius: 15px;
+                margin-left: 120px;
+                margin-right: 60px;
+            }
+            .fm {
+                border: none;
+            }
 
-    #content {
-        width: 50%;
-        margin: 20px auto;
-    }
-    form {
-        width: 50%;
-        margin: 20px auto;
-        display: inline-block;
-    }
-    form div {
-        margin-top: 5px;
-    }
-    #img_div {
-        width: 80%;
-        padding: 5px;
-        border: none;
-        justify-items: stretch;
-    }
-    #img_div:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-    .projects {
-        height: 200px;
-        border: 2px solid #031C36;
-        border-radius: 15px;
-    }
-    .topnav .search-container {
-        float:left;
-        border-right: 3px solid #05386B;
-        padding: 4px;
-        height: 40px;
-    }
+            #content {
+                width: 50%;
+                margin: 20px auto;
+            }
+            /*form {
+                width: 50%;
+                margin: 20px auto;
+                display: inline-block;
+            }*/
+            #img_div {
+                width: 80%;
+                padding: 5px;
+                border: none;
+                justify-items: stretch;
+            }
+            #img_div:after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+            .projects {
+                height: 200px;
+                border: 2px solid #031C36;
+                border-radius: 15px;
+            }
 
-    
-
-    .topnav input[type=text] {
-        margin-top: 5px;
-        float: left;
-        padding: 6px;
-        font-size: 17px;
-        border: none;
-    }
-
-    .topnav .search-container button {
-        float: left;
-        padding: 4px 5px;
-        margin-top: 5px;
-        background: #22FFAD;
-        font-size: 17px;
-        border: none;
-        cursor: pointer;
-    }
-
-    .topnav .search-container button:hover {
-        background: #ddd;
-    }
         </style>
     </head>
 
-    <body style="background-image: linear-gradient(#22FFAD 35%, rgb(13, 117, 79));">
+    <body>
 
         <div class="topnav">
-            <a onclick="window.location.href = 'quest_home.html'" class="top-logo"><img src="Qlogo1.png" id="toplogo" alt="Quest Logo Top" width = 45></a> 
+            <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left">
             <div class="search-container">
                 <form action="search.php" method="post">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="material-icons" style="color:#05386B; float:left">search</i></button>
                 </form>
             </div>
-            <a href="home_page.php">PROJECTS</a>
-            <a href="portfolio_edit.php">PORTFOLIO</a>
-            <a id="profile-link" href="logout.php">LOGOUT</a>
-            <a id="profile-link" href="profile_choose.php">PROFILE</a>
-
+            <a href="home_page.php">Projects</a>
+            <a href="portfolio_edit.php">Portfolio</a>
+            <a href="logout.php" style="float:right">Logout</a>
+            <a href="profile_choose.php" style="float:right">Profile</a>
         </div>
 
-
-        <br>
-        <br>
-        <br>
-        
-
-
-        <hr class="sexy_line" color="#05386B">
-
-        <br>
-        <br>
-        <br>
-        <br>
 
         <div class="maingrid">
             <div class="box">

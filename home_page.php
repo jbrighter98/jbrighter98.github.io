@@ -1,90 +1,21 @@
 <?php
 session_start();
+
+if(!$_SESSION["email"]){
+    header("Location: Login.html");
+}
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <title>
-            Home
+            Quest - Projects
         </title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" type="text/css" href="style_page.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            body {
-            margin: 0;
-            font-family: menlo;
-            background-color: white;
-            }
-
-            .topnav {
-            overflow: hidden;
-            background-color: #22FFAD;
-            border-bottom: 3px solid #05386B;
-            }
-
-            .topnav a {
-            float: left;
-            color: #05386B;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-            }
-
-            .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-            }
-
-            .topnav a.active {
-            background-color: #05386B;
-            color: white;
-            }
-
-
-
-
-
-
-            .topnav .search-container {
-                float:left;
-                border-right: 3px solid #05386B;
-                padding: 4px;
-                height: 40px;
-            }
-
-            
-
-            .topnav input[type=text] {
-                margin-top: 5px;
-                float: left;
-                padding: 6px;
-                font-size: 17px;
-                border: none;
-            }
-
-            .topnav .search-container button {
-                float: left;
-                padding: 4px 5px;
-                margin-top: 5px;
-                background: #22FFAD;
-                font-size: 17px;
-                border: none;
-                cursor: pointer;
-            }
-
-            .topnav .search-container button:hover {
-                background: #ddd;
-            }
-
-            
-
-
-
-
-
-
             .center {
                 margin: auto;
                 width: 75%;
@@ -102,7 +33,7 @@ session_start();
                 border: 1px solid #05386B;
                 border-radius: 15px;
                 width: 100%;
-                height: 300px;
+                height: 130px;
                 background-color: white;
                 padding: 5px;
                 color: #05386B;
@@ -171,7 +102,7 @@ session_start();
                     <button type="submit"><i class="material-icons" style="color:#05386B; float:left">search</i></button>
                 </form>
             </div>
-            <a href="home_page.php">Home</a>
+            <a href="home_page.php">Projects</a>
             <a href="portfolio_edit.php">Portfolio</a>
             <a href="logout.php" style="float:right">Logout</a>
             <a href="profile_choose.php" style="float:right">Profile</a>
@@ -179,7 +110,7 @@ session_start();
 
         <div class="center">
             <div class="sidecontainer">
-                <div class="self" style="margin-bottom: 5px;">Name
+                <div class="self" style="margin-bottom: 5px;">
                 <?php
 
                 $user = 'root';
@@ -197,46 +128,30 @@ session_start();
                 if (mysqli_num_rows($sth) == 1) {
                     $row = $sth->fetch_assoc();
                     ?>
-                        <p>
+                        <div style="float: left; height: max-content;">
+                            <p>
                     <?php
-                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="100" height="100" />';
+                                echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="100" height="100" style="border: 1px solid #05386B; border-radius: 15px;"/>';
                     ?>
-                        </p>
-                        <p>
+                            </p>
+                        </div>
+                        <div style="float: left; margin-left: 5px; height: max-content;">
+                            <p>
                     <?php
-                        echo $row["name1"];
+                                echo $row["name1"];
                     ?>
-                        </p>
-                        <p>
+                            </p>
+                            <p>
                     <?php
-                        echo $row["email"];
+                                echo $row["email"];
                     ?>
-                        </p>
-                        <p>
+                            </p>
+                            <p>
                     <?php
-                        echo $row["years"];
+                                echo $row["major"];
                     ?>
-                        </p>
-                        <p>
-                    <?php
-                        echo $row["major"];
-                    ?>
-                        </p>
-                        <p>
-                    <?php
-                        echo $row["aoi"];
-                    ?>
-                        </p>
-                        <p>
-                    <?php
-                        echo $row["career"];
-                    ?>
-                        </p>
-                        <p>
-                    <?php
-                        echo $row["reason"];
-                    ?>
-                        </p>
+                            </p>
+                    </div>
                     <?php
                 }else{
                     mysqli_select_db($conn, "professor_profile") or die("Unable to connect to db");
@@ -245,51 +160,30 @@ session_start();
                     if (mysqli_num_rows($sth) == 1) {
                         $row = $sth->fetch_assoc();
                         ?>
+                        <div style="float: left; height: max-content;">
                             <p>
-                        <?php
-                            echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="100" height="100" />';
-                        ?>
+                    <?php
+                                echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="100" height="100" />';
+                    ?>
+                            </p>
+                        </div>
+                        <div style="float: left; margin-left: 5px; height: max-content;">
+                            <p>
+                    <?php
+                                echo $row["name1"];
+                    ?>
                             </p>
                             <p>
-                        <?php
-                            echo $row["name1"];
-                        ?>
+                    <?php
+                                echo $row["email"];
+                    ?>
                             </p>
                             <p>
-                        <?php
-                            echo $row["email"];
-                        ?>
+                    <?php
+                                echo $row["expertise"];
+                    ?>
                             </p>
-                            <p>
-                        <?php
-                            echo $row["expertise"];
-                        ?>
-                            </p>
-                            <p>
-                        <?php
-                            echo $row["background"];
-                        ?>
-                            </p>
-                            <p>
-                        <?php
-                            echo $row["aoi"];
-                        ?>
-                            </p>
-                            <p>
-                        <?php
-                            echo $row["projects"];
-                        ?>
-                            </p>
-                            <p>
-                        <?php
-                            echo $row["research"];
-                        ?>
-                            </p>
-                            <p>
-                        <?php
-                            echo $row["links"];
-                        ?>
-                            </p>
+                    </div>
                         <?php
                     }
                 }

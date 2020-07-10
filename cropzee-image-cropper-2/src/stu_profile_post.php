@@ -1,11 +1,20 @@
 <?php
 session_start();
+
+if(!$_SESSION["email"]){
+      header("Location: ../../Login.html");
+}
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <title>
+            Quest - Profile
+      </title>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" type="text/css" href="../../style_page.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
 * {
@@ -13,80 +22,34 @@ session_start();
   padding: 0;
 }
 
-body {
-  height: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: #22FFAD;
-  background-image: linear-gradient(#22FFAD 35%, rgb(13, 117, 79))
+
+.center {
+      margin: auto;
+      margin-top: 10px;
+      width:50%;
+      height: 100%;
+      Font-size:20px;
+      Border-radius: 10px;
+      background-color: white;
+      border: 1px solid #05386B;
+      padding: 10px;
+
 }
 
-.topnav a {
-    float: left;
-    display: block;
-    color:#05386B;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-#profile-link {
-    float: right;
-}  
-/* Change the color of links on hover */
-.topnav a:hover {
-    background-color: #05386B;
-    color:#25F09A;
-}
-/* Style the search box inside the navigation bar */
-.topnav input[type=text] {
-    float: left;
-    padding: 6px;
-    border: none;
-    margin-top: 8px;
-    margin-right: 16px;
-    font-size: 17px;
-}
-.topnav .search-container {
-      float:left;
-      border-right: 3px solid #05386B;
-      padding: 4px;
-      height: 40px;
+.center:after{
+      content: " "; 
+      display: block;
+      clear: both;
 }
 
+.center1 {
+      margin: auto;
+      width: 5%;
+      height: 10%;
+      Font-size:20px;
+      Border-radius: 5px;
 
-
-.topnav input[type=text] {
-      margin-top: 5px;
-      float: left;
-      padding: 6px;
-      font-size: 17px;
-      border: none;
 }
-
-.topnav .search-container button {
-      float: left;
-      padding: 4px 5px;
-      margin-top: 5px;
-      background: #22FFAD;
-      font-size: 17px;
-      border: none;
-      cursor: pointer;
-}
-
-.topnav .search-container button:hover {
-      background: #ddd;
-}
-
-  hr.sexy_line {
-  border: 0;
-  height: 5px;
-  background: #05386B;
-  background-image: -webkit-linear-gradient(left, #22FFAD, #05386B, #22FFAD);
-  background-image: -moz-linear-gradient(left, #22FFAD, #05386B, #22FFAD);
-  background-image: -ms-linear-gradient(left, #22FFAD, #05386B, #22FFAD);
-  background-image: -o-linear-gradient(left, #22FFAD, #05386B, #22FFAD);
-  }
 
 .tab {
     display: inline-block;
@@ -103,23 +66,42 @@ body {
     margin-left: 50px;
   }
 
-  ::-webkit-input-placeholder {
-    color: #EFEFEF;
+
+  .container1{
+      width: 100%;
+      height: auto;
+      margin: auto;
+      float:left;
+  }
+  .subcontainer1{
+      /*margin: auto;*/
+      width: 50%;
+      height: 10%;
+      Font-size:20px; 
   }
 
-  .container{
-    float: center;
-    position: absolute;
-    left: 500px;
-    top: 60px; /*50px*/
-    Width: 500px;
-    Height: 720px;
-    Padding: 0px;
-    Margin-left: 7%
-    Background: none;
-    Font-size:20px;
-    Border: 2px solid #05386B;
-    Border-radius: 5px;
+  .container2{
+      width: 100%;
+      height: auto;
+      margin: auto;
+      float: left;
+  }
+
+  .button {
+      background-color: #d1d0ce;
+      border-radius: 25px;
+      color:#05386B;
+      border: 3px solid #05386B;
+      padding: 15px 32px;
+      text-align: center;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 10px;
+  }
+
+  .button:hover {
+      background-color: #05386B;
+      color: white;
   }
 
 
@@ -128,29 +110,21 @@ body {
 </head>
 <body>
 
-<div class="topnav">
-      <a onclick="window.location.href = 'quest_home.html'" class="top-logo"><img src="Qlogo1.png" id="toplogo" alt="Quest Logo Top" width = 45></a> 
-      <div class="search-container">
-            <form action="../../search.php" method="post">
-                  <input type="text" placeholder="Search.." name="search">
-                  <button type="submit"><i class="material-icons" style="color:#05386B; float:left">search</i></button>
-            </form>
+      <div class="topnav">
+            <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left">
+            <div class="search-container">
+                <form action="../../search.php" method="post">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="material-icons" style="color:#05386B; float:left">search</i></button>
+                </form>
+            </div>
+            <a href="../../home_page.php">Projects</a>
+            <a href="../../portfolio_edit.php">Portfolio</a>
+            <a href="../../logout.php" style="float:right">Logout</a>
+            <a href="../../profile_choose.php" style="float:right">Profile</a>
       </div>
-      <a href="../../home_page.php">PROJECTS</a>
-      <a href="../../portfolio_edit.php">PORTFOLIO</a>
-      <a id="profile-link" href="../../logout.php">LOGOUT</a>
-      <a id="profile-link" href="stu_profile_post.php">PROFILE</a>
-</div>
-      <br>
-      <br>
-      <br>
-<hr class="sexy_line" color="#05386B">
-      <br>
-      <br>
-      <br>
-      <br>
 
-    <div class=container>
+    <div class=center>
 
       <?php
 
@@ -170,51 +144,69 @@ body {
       if ($sth->num_rows == 1) {
         $row = $sth->fetch_assoc();
       ?>
-            <p>
+            <div class="container1">
+            <div class="subcontainer1">      
+                  <div style="float:left; margin: 10px">
       <?php
-            echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="200" height="200" />';
+                        echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="200" height="200" style="border: 1px solid #05386B; border-radius: 15px;"/>';
       ?>
-            </p>
-            <p>
+                  </div>
+                  <div style="float:left; margin: 10px">
+                        <p>
       <?php
-            echo $row["name1"];
+                              echo $row["name1"];
       ?>
-            </p>
-            <p>
+                        </p>
+                        <p>
       <?php
-            echo $row["email"];
+                              echo $row["email"];
       ?>
-            </p>
-            <p>
+                        </p>
+                        <p>
       <?php
-            echo $row["years"];
+                              echo $row["years"];
       ?>
-            </p>
-            <p>
+                        </p>
+                        <p>
       <?php
-            echo $row["major"];
+                              echo $row["major"];
       ?>
-            </p>
-            <p>
+                        </p>
+                  </div>
+            </div>
+            </div>
+      </div>
+            <div class="container2">
+                  <div class="center">
+                  <h1 style="font-size: 24px;">Areas of Interest</h1>
+                  <p>
       <?php
-            echo $row["aoi"];
+                        echo $row["aoi"];
       ?>
-            </p>
-            <p>
+                  </p>
+                  </div>
+                  <div class="center">
+                  <h1 style="font-size: 24px;">Carrer Ambitions</h1>
+                  <p>
       <?php
-            echo $row["career"];
+                        echo $row["career"];
       ?>
-            </p>
-            <p>
+                  </p>
+                  </div>
+                  <div class="center">
+                  <h1 style="font-size: 24px;">Research Goals</h1>
+                  <p>
       <?php
-            echo $row["reason"];
+                        echo $row["reason"];
       ?>
-            </p>
+                  </p>
+                  </div>
+            </div>
+
       <?php
       }
       ?>
-      <button onclick="window.location.href='stu_profile_edit.php'">Edit</button>
-
-
-    </div>
+      <div class="center1">
+      <button class="button" onclick="window.location.href='stu_profile_edit.php'">Edit</button>
+      </div>
   </body>
