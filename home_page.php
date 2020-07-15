@@ -204,14 +204,44 @@ if(!$_SESSION["email"]){
                             $pass = '';
                             $db = 'projects';
 
-                            $tag = array("cmpsci", "econ");
+
 
                             ?>
                                 <div class=project>
+                                <h1>Areas of Interest</h1>
                             <?php
-                            foreach($tag as $tagelement){
-                                echo "$tagelement ";
-                            }
+                                $user1 = 'root';
+                                $pass1 = '';
+                                $db1 = 'student_profile';
+                                $conn1 = mysqli_connect('localhost',$user1,$pass1) or die("Unable to connect");
+                                mysqli_select_db($conn1, $db1) or die("Unable to connect to db");
+                
+                                $sql1 = "SELECT aoi FROM students WHERE email='$email'";
+                                $result1 = $conn1->query($sql1);
+                
+                                if(mysqli_num_rows($result1) > 0){
+                                    $row1 = $result1->fetch_assoc();
+                                    $aoi = $row1["aoi"];
+                                    if($aoi == ""){
+                                        echo "None";
+                                    }
+                                    else {
+                                        parse_str($aoi, $output);
+                                        $c = 0;
+                                        foreach($output as $tag){
+                                            if($c == 0) {
+                                                echo $tag;
+                                            }
+                                            else {
+                                                echo " - $tag";
+                                            }
+                                            $c += 1;
+                                        }
+                                    }
+                                }
+                                else {
+                                    header("Location: general_error_page.html");
+                                }
                             ?>
                                 </div>
                             <?php
@@ -225,12 +255,12 @@ if(!$_SESSION["email"]){
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
-                                    testtags($row, $tag);
+                                    testtags($row, $output);
                                 }    
                             }
 
-                            function testtags($row, $tag){
-                                foreach ($tag as $temp) {
+                            function testtags($row, $output){
+                                foreach($output as $temp) {
                                     if(strpos($row["Tags"], $temp) !== false){
                                         writeProject($row);
                                         break;
@@ -270,16 +300,16 @@ if(!$_SESSION["email"]){
                                 </p>
                                 <p>Tags:
                         <?php
-                                $array = str_split($row["Tags"]);
-                                foreach ($array as $char) {
-                                    if($char == "/"){
-                                        echo ", ";
-                                        continue;
+                                parse_str($row["Tags"], $tags);
+                                $c = 0;
+                                foreach($tags as $tag){
+                                    if($c == 0) {
+                                        echo $tag;
                                     }
-                                    if($char == "#") {
-                                        break;
+                                    else {
+                                        echo " - $tag";
                                     }
-                                    echo $char;
+                                    $c += 1;
                                 }
                         ?>
                                 </p>

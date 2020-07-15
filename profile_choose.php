@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if(!$_SESSION["email"]){
+    header("Location: Login.html");
+}
+
 $email = $_SESSION["email"];
 
 $dbServername = "localhost";

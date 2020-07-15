@@ -11,6 +11,10 @@ $dbUsername = "root";
 $dbPassword = "";
 $dbName = "user_info";
 
+if(!$email || !$pword || !$cword || !$type) {
+    header("Location: general_error_page.html");
+}
+
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword) or die("no connection");
 mysqli_select_db($conn, $dbName) or die("no db");
 

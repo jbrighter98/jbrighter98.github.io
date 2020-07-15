@@ -181,7 +181,24 @@ if(!$_SESSION["email"]){
                   <h1 style="font-size: 24px;">Areas of Interest</h1>
                   <p>
       <?php
-                        echo $row["aoi"];
+
+                        $aoi = $row["aoi"];
+                        if($aoi == ""){
+                              echo "None";
+                        }
+                        else {
+                              parse_str($aoi, $output);
+                              $c = 0;
+                              foreach($output as $tag){
+                              if($c == 0) {
+                                    echo $tag;
+                              }
+                              else {
+                                    echo " - $tag";
+                              }
+                              $c += 1;
+                              }
+                        }
       ?>
                   </p>
                   </div>

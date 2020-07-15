@@ -10,7 +10,7 @@ if(!$_SESSION["email"]){
 <html>
     <head>
         <title>
-            Search
+            Quest - Search
         </title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" type="text/css" href="style_page.css">

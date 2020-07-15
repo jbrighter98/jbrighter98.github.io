@@ -5,7 +5,14 @@
 		<style>
 			::-webkit-input-placeholder { 
 				color: #EFEFEF;
-			}
+            }
+            
+            input, select, textarea{  
+                -ms-box-sizing:content-box;
+                -moz-box-sizing:content-box;
+                box-sizing:content-box;
+                -webkit-box-sizing:content-box; 
+            }
 			
 			Form{
 				Width: 32%; /*<!--30%,20%-->*/
@@ -57,29 +64,29 @@
 		
 		<div>
 			<form align="middle" action="Login_entry.php" method="POST" id="form1">	
-                <input type="text" id="email" name="email" placeholder="Enter your Email" style="color: #FFFFFF" onkeypress="field_wait()">
+                <input type="text" id="email" name="email" placeholder="Enter your Email" style="color: #FFFFFF" onkeydown="field_wait()">
                 
                 <label for="uname" style="display: none; font-family: Menlo; color: red" id="errU">
                     Username must be less than 20 characters.
                 </label>
 
-                <input type="password" id="pword" name="pword" placeholder="Create a Password" style="color: #FFFFFF" onkeypress="field_wait()">
+                <input type="password" id="pword" name="pword" placeholder="Enter your Password" style="color: #FFFFFF" onkeydown="field_wait()">
                 
                 <label for="pword" style="display: none; font-family: Menlo; color: red" id="errP">
                     Password must be less than 100 characters.
                 </label>
 
-                <input id="submit_button" type="submit" value="Login" size="50" style="visibility: hidden;">
-                
                 <p>
                 <label for="submit_button" style="font-family: Menlo; color: red;" id="lError">
                     Email or password is incorrect.
                 </label>
                 </p>
 
+                <input id="submit_button" type="submit" value="Login" size="50" style="visibility: hidden;">
+                
 				<script>
                     function field_wait(){
-                        setTimeout(field_checker, 500);
+                        setTimeout(field_checker, 250);
                     }
                     function field_checker() {
                         var p = document.getElementById("pword").value;
@@ -91,12 +98,12 @@
                         if(p.length != 0){
                             if(p.length >= 100){
                                 document.getElementById("errP").style.display = "block";
-                                document.getElementById("form1").style.height = "320px";
+                                //document.getElementById("form1").style.height = "320px";
                                 pcheck = false;
                             }
                             else{
                                 document.getElementById("errP").style.display = "none";
-                                document.getElementById("form1").style.height = "300px";
+                                //document.getElementById("form1").style.height = "300px";
                                 pcheck = true;
                             }
                         }
@@ -104,12 +111,12 @@
                         if(e.length != 0) {
                             if(e.length >= 20) {
                                 document.getElementById("errU").style.display = "block";
-                                document.getElementById("form1").style.height = "320px";
+                                //document.getElementById("form1").style.height = "320px";
                                 echeck = false;
                             }
                             else {
                                 document.getElementById("errU").style.display = "none";
-                                document.getElementById("form1").style.height = "300px";
+                                //document.getElementById("form1").style.height = "300px";
                                 echeck = true;
                             }
                         }

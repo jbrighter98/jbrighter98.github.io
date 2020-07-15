@@ -121,6 +121,24 @@ input[type=submit]:hover {
 	background-color: #05386B;
     color: white;
 }
+
+.tagedit {
+    background-color: Transparent;
+	border-radius: 25px;
+	color:#05386B;
+	border: 3px solid #05386B;
+	padding: 10px 24px;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	margin: 10px;
+	float:center;
+}
+
+.tagedit:hover {
+    background-color: #05386B;
+    color: white;
+}
 /********************************************************************************************** */
 .center {
     margin: auto;
@@ -221,10 +239,27 @@ input[type=submit]:hover {
 			</div>
 		</div>
 		<div class="center">
-				<h1 align="left" style="font-size: 24px;">Areas of Interest</h1>
-			<textarea cols="40" rows="5" maxlength="200" id="aoi" name="aoi" placeholder="Research Area(s) Of Interest" style="Width:80%; Padding: 5px; Font-size: 17px; font-family: serif;" onfocus="this.placeholder = '' offfocus="this.placeholder = ''>
-<?PHP echo ($row)?$row["aoi"]:''; ?>
-</textarea>
+			<h1 align="left" style="font-size: 24px;">Areas of Interest</h1>
+			<?php
+				$aoi = $row["aoi"];
+                        if($aoi == ""){
+                              echo "None";
+                        }
+                        else {
+                              parse_str($aoi, $output);
+                              $c = 0;
+                              foreach($output as $tag){
+                              if($c == 0) {
+                                    echo $tag;
+                              }
+                              else {
+                                    echo " - $tag";
+                              }
+                              $c += 1;
+                              }
+						}
+			?>
+			<a href="../../tag_chooser.php" class="tagedit">Edit</a>
 		</div>
 		<div class="center">
 				<h1 align="left" style="font-size: 24px;">Career Ambitions</h1>
