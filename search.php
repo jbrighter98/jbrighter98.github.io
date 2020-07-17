@@ -86,7 +86,7 @@ if(!$_SESSION["email"]){
         <div class="topnav">
             <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left;">
             <a href="home_page.php">Projects</a>
-            <a href="portfolio_edit.php">Portfolio</a>
+            <a href="portfolio_post.php">Portfolio</a>
             <a href="logout.php" style="float:right">Logout</a>
             <a href="profile_choose.php" style="float:right">Profile</a>
 
@@ -182,16 +182,16 @@ if(!$_SESSION["email"]){
                         </p>
                         <p>Tags:
                 <?php
-                        $array = str_split($row["Tags"]);
-                        foreach ($array as $char) {
-                            if($char == "/"){
-                                echo ", ";
-                                continue;
+                        parse_str($row["Tags"], $tags);
+                        $c = 0;
+                        foreach($tags as $tag){
+                            if($c == 0) {
+                                echo $tag;
                             }
-                            if($char == "#") {
-                                break;
+                            else {
+                                echo " - $tag";
                             }
-                            echo $char;
+                            $c += 1;
                         }
                 ?>
                         </p>

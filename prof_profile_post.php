@@ -2,7 +2,7 @@
 session_start();
 
 if(!$_SESSION["email"]){
-      header("Location: ../../Login.html");
+      header("Location: Login.html");
 }
 ?>
 
@@ -13,7 +13,7 @@ if(!$_SESSION["email"]){
             Quest - Profile
       </title>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-      <link rel="stylesheet" type="text/css" href="../../style_page.css">
+      <link rel="stylesheet" type="text/css" href="style_page.css">
       <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 
@@ -115,15 +115,15 @@ if(!$_SESSION["email"]){
       <div class="topnav">
             <img src="Qlogo1.png" alt="Quest Logo Top" width=45 style="margin-top: 12px; margin-left: 5px; margin-right: 20px; float:left">
             <div class="search-container">
-                <form action="../../search.php" method="post">
+                <form action="search.php" method="post">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="material-icons" style="color:#05386B; float:left">search</i></button>
                 </form>
             </div>
-            <a href="../../home_page.php">Projects</a>
-            <a href="../../portfolio_edit.php">Portfolio</a>
-            <a href="../../logout.php" style="float:right">Logout</a>
-            <a href="../../profile_choose.php" style="float:right">Profile</a>
+            <a href="home_page.php">Projects</a>
+            <a href="portfolio_post.php">Portfolio</a>
+            <a href="logout.php" style="float:right">Logout</a>
+            <a href="profile_choose.php" style="float:right">Profile</a>
       </div>
 
     <div class=center>
@@ -154,7 +154,7 @@ if(!$_SESSION["email"]){
       ?>
                   </div>
                   <div style="float:left; margin: 10px">
-                        <p>
+                        <p style="font-size: 48px">
       <?php
                               echo $row["name1"];
       ?>

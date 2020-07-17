@@ -33,7 +33,8 @@ if(!$_SESSION["email"]){
                 border: 1px solid #05386B;
                 border-radius: 15px;
                 width: 100%;
-                height: 130px;
+                min-height: 130px;
+                height:auto;
                 background-color: white;
                 padding: 5px;
                 color: #05386B;
@@ -89,6 +90,50 @@ if(!$_SESSION["email"]){
                 padding: 5px;
                 margin-bottom: 10px;
             }
+            .project:after{
+                content: " "; 
+                display: block;
+                clear: both;
+            }
+
+            .button {
+                background-color: White;
+                border-radius: 25px;
+                color:#05386B;
+                border: 3px solid #05386B;
+                padding: 15px 32px;
+                text-align: center;
+                display: inline-block;
+                font-size: 16px;
+                margin-top: 10px;
+                float: right;
+            }
+
+            .button:hover {
+                background-color: #05386B;
+                color: white;
+            }
+
+            .self .button {
+                background-color: White;
+                border-radius: 25px;
+                color:#05386B;
+                border: 2px solid #05386B;
+                padding: 5px 12px;
+                text-align: center;
+                display: inline-block;
+                font-size: 16px;
+                float: right;
+            }
+
+            .self .button:hover {
+                background-color: #05386B;
+                color: white;
+            }
+
+            .sidecontainer p {
+                font-size: 18px;
+            }
 
         </style>
     </head>
@@ -103,7 +148,7 @@ if(!$_SESSION["email"]){
                 </form>
             </div>
             <a href="home_page.php">Projects</a>
-            <a href="portfolio_edit.php">Portfolio</a>
+            <a href="portfolio_post.php">Portfolio</a>
             <a href="logout.php" style="float:right">Logout</a>
             <a href="profile_choose.php" style="float:right">Profile</a>
         </div>
@@ -128,17 +173,20 @@ if(!$_SESSION["email"]){
                 if (mysqli_num_rows($sth) == 1) {
                     $row = $sth->fetch_assoc();
                     ?>
+                        <a href="stu_profile_edit.php" class="button" >Edit</a>
                         <div style="float: left; height: max-content;">
                             <p>
                     <?php
                                 echo '<img src="data:image/jpeg;base64,'.base64_encode($row['image1']).'" width="100" height="100" style="border: 1px solid #05386B; border-radius: 15px;"/>';
                     ?>
                             </p>
+                            
                         </div>
                         <div style="float: left; margin-left: 5px; height: max-content;">
                             <p>
                     <?php
                                 echo $row["name1"];
+                                
                     ?>
                             </p>
                             <p>
@@ -151,7 +199,7 @@ if(!$_SESSION["email"]){
                                 echo $row["major"];
                     ?>
                             </p>
-                    </div>
+                        </div>
                     <?php
                 }else{
                     mysqli_select_db($conn, "professor_profile") or die("Unable to connect to db");
@@ -160,6 +208,7 @@ if(!$_SESSION["email"]){
                     if (mysqli_num_rows($sth) == 1) {
                         $row = $sth->fetch_assoc();
                         ?>
+                        <a href="prof_profile_edit.php" class="button" >Edit</a>
                         <div style="float: left; height: max-content;">
                             <p>
                     <?php
@@ -189,7 +238,7 @@ if(!$_SESSION["email"]){
                 }
                 ?>
                 </div>
-                <div class="network">Network</div>
+                <div class="network">Network - Coming Soon</div>
             </div>
             <div class="contentcontainer">
                 <!--<div class=newscontainer>
@@ -208,7 +257,9 @@ if(!$_SESSION["email"]){
 
                             ?>
                                 <div class=project>
-                                <h1>Areas of Interest</h1>
+                                <h1 >Areas of Interest</h1>
+                                <a href="tag_chooser.php" class="button" >Edit</a>
+                                <p style="font-size: 24px">
                             <?php
                                 $user1 = 'root';
                                 $pass1 = '';
@@ -218,7 +269,7 @@ if(!$_SESSION["email"]){
                 
                                 $sql1 = "SELECT aoi FROM students WHERE email='$email'";
                                 $result1 = $conn1->query($sql1);
-                
+                                $output = [];
                                 if(mysqli_num_rows($result1) > 0){
                                     $row1 = $result1->fetch_assoc();
                                     $aoi = $row1["aoi"];
@@ -243,6 +294,7 @@ if(!$_SESSION["email"]){
                                     header("Location: general_error_page.html");
                                 }
                             ?>
+                                </p>
                                 </div>
                             <?php
 
@@ -252,11 +304,21 @@ if(!$_SESSION["email"]){
                             $sql = "SELECT ID, Title, rLocation, Instructor, Website, rDescription, Tags FROM projects";
                             $result = $conn->query($sql);
 
-                            if ($result->num_rows > 0) {
+                            if ($result->num_rows > 0 && !empty($output)) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
                                     testtags($row, $output);
                                 }    
+                            }
+                            else {
+                                ?>
+                                <div class=project>
+                                <h style="font-size: xx-large;">
+                                    No projects to show. Add some Areas of Interest!
+                                </h>
+                                </div>
+                                <?php
+
                             }
 
                             function testtags($row, $output){

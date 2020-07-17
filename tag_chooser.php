@@ -219,7 +219,7 @@ $email = $_SESSION["email"];
                 </form>
             </div>
             <a href="home_page.php">Projects</a>
-            <a href="portfolio_edit.php">Portfolio</a>
+            <a href="portfolio_post.php">Portfolio</a>
             <a href="logout.php" style="float:right">Logout</a>
             <a href="profile_choose.php" style="float:right">Profile</a>
         </div>
@@ -233,6 +233,7 @@ $email = $_SESSION["email"];
 
         <div class="contentcontainer">
             <h1>Current Areas of Interest</h1>
+            <p style="font-size: 24px">
             <?php
                 $user1 = 'root';
                 $pass1 = '';
@@ -267,6 +268,7 @@ $email = $_SESSION["email"];
                     header("Location: general_error_page.html");
                 }
             ?>
+            </p>
         </div>
 
             

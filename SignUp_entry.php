@@ -42,7 +42,7 @@ else{
             $sql3 = "INSERT INTO students (email) VALUES ('$email')";
             $res3 = mysqli_query($conn, $sql3);
             if(mysqli_affected_rows($conn) > 0) {
-                header("Location: cropzee-image-cropper-2/src/stu_profile_edit.php");
+                header("Location: stu_profile_edit.php");
             } else {
                 header("Location: general_error_page.html");
             }
@@ -55,7 +55,7 @@ else{
             $sql4 = "INSERT INTO professor (email) VALUES ('$email')";
             $res4 = mysqli_query($conn, $sql4);
             if(mysqli_affected_rows($conn) > 0) {
-                header("Location: cropzee-image-cropper-2/src/prof_profile_edit.php");
+                header("Location: prof_profile_edit.php");
             } else {
                 header("Location: general_error_page.html");
             }

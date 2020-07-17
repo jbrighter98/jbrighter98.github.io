@@ -22,10 +22,10 @@ $res = mysqli_query($conn, $sql1);
 $row = $res->fetch_assoc();
 if(mysqli_num_rows($res) > 0){
     if($row['types'] == "Professor") {
-        header("Location: cropzee-image-cropper-2/src/prof_profile_post.php");
+        header("Location: prof_profile_post.php");
     }
     else if($row['types'] == "Student") {
-        header("Location: cropzee-image-cropper-2/src/stu_profile_post.php");
+        header("Location: stu_profile_post.php");
     }
     else{
         header("Location: general_error_page.html");
