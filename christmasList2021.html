@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="tree.js"></script>
+    <link rel="stylesheet" href="christmasStyle.css">
+    <style>
+      * {
+          padding: 0;
+          margin: 0;
+      }
+    </style>
+    <audio hidden="true" autoplay loop controls>
+        <source src="jingleBells.mp3">
+    </audio>
+  </head>
+
+  <body onload="run()" style="background:black">
+    
+    <div class="container fade-in-text">
+        <canvas id="scene" width="500px" height="500px" style="background:black; display: block; margin: 0 auto"></canvas>
+        Play Me!<br><br>
+        <audio id="divAudio" src="jb.ogg" controls autoplay loop type="audio/ogg">Audio not supported</audio>
+        <br><br><br>
+        <h1>
+            My Christmas List 2021
+        </h1>
+        <br> <br>
+        <p>Note: Due to me being in a financially precarious situation this year, I would like to opt out of Christmas this year.<br>
+        I encourage you all to not get me gifts out of fairness. But here is my list anyway in case something changes. <br>
+        (Also because Mom is still making me)</p>
+        <br> <br> <br> <br>
+        <ul>
+            <li>Keeps Renewal for 2022</li>
+            <li>short-sleeve T-shirts: size M</li>
+            <li></li>
+
+        </ul>
+    </div>
+
+    <script>
+        var vAudio = document.getElementById("divAudio");
+        var hasInit = false;
+        function playMusic()
+        {
+           if(!hasInit)
+           {
+               hasInit = true;
+               vAudio.play();
+           }
+        }
+     </script>
+  </body>
+
+</html>
