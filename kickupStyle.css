@@ -1,0 +1,87 @@
+html,
+body {
+    margin: 0;
+    display: flex;
+  
+    /* This centers our sketch horizontally. */
+    justify-content: center;
+  
+    /* This centers our sketch vertically. */
+    vertical-align: middle;
+    align-items: center;
+    background-color: #111111;
+}
+
+body {
+  display: table;
+}
+
+.centered-text {
+    position:fixed;
+    left: 50%; 
+    top: 150px; 
+    transform: translate(-50%, -50%);
+    text-align: center;
+    display: table-cell;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 1001;
+}
+
+.button {
+    
+    background-color: #00a7ff; /* Green */
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .button1 {
+    background-color: #111111; 
+    color: #00a7ff; 
+    border: 2px solid #00a7ff;
+  }
+
+  .button1:hover {
+    background-color: #00a7ff;
+    color: white;
+  }
+
+  .button2 {
+    background-color: #111111; 
+    color: #00a7ff; 
+    border: 2px solid #00a7ff;
+    font-size:30px;
+  }
+
+  .button2:hover {
+    background-color: #00a7ff;
+    color: white;
+  }
+
+
+.centered-text img {
+    border: 2px solid #00a7ff;
+    border-radius: 10px;
+
+    height: 200px;
+    text-align: center;
+}
+
+.centered-text h1 {
+    font-size: 40px;
+    vertical-align: middle;
+    color: white;
+}
+.centered-text p {
+    font-size: 20px;
+    vertical-align: middle;
+    color: white;
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Joseph Brighter - Color Theory</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="animations.css">
+        <script type="text/javascript" src="js/processing.js"></script>
+    </head>
+    <body>
+
+      <div class="side fade-in-text">
+
+        <div class="top" >
+            <img alt="My Logo" src="PersonalLogoBlue.png">            
+        </div>
+        <div class="sidecontent">
+            <button class="button" onclick="location.href = 'index.html';">About</button> <br>
+            <button class="button" onclick="location.href = 'contact.html';">Contact</button><br>
+            <button class="button" onclick="location.href = 'directory.html';">Directory</button><br>
+        </div>
+        <div class="bottom">
+            <a style="color: #00a7ff;" href="https://www.linkedin.com/in/joseph-brighter-53607a176/"><img alt="My LinkedIn" src="LinkedIn-Logos/LI-In-Bug.png"></a>.
+        </div>
+
+    </div>
+
+
+    <div class="content">
+
+        <div class="centered-text fade-in-text" style="padding-top:3%;">
+
+          <p>This project was an exploration into how RGB colors are converted to grayscale or their inverse. (left click to switch)</p>
+
+          <script type="text/processing" data-processing-target="sketch">
+
+            int frames = 0;
+
+            // invert variable is for switching between grayscale and inverted modes.
+            boolean invert = false;
+            
+            void setup() {
+              // width is set to be equal to the number of colors used
+              size(1530,700);
+              noStroke();
+            }
+            
+            void draw(){
+              
+              noStroke();
+              // calling a function to draw the rainbow for the current frame.
+              rainbow(frames);
+              
+              // increasing the frame variable for each frame.
+              frames += 1;
+              stroke(0);
+              strokeWeight(3);
+              
+              // making the viewing window
+              fill(255, 0);
+              rect(mouseX+550, 0, 400, height);
+              
+            }
+            
+            // mousePressed function for switching between grayscale and inverted
+            void mousePressed() {
+              invert = !invert;
+            }
+            
+            void rainbow(int frames) {
+              
+              // initializing the variables for drawing the rainbow
+              int round;
+              int i;
+              int r = 255;
+              int g = 0;
+              int b = 0;
+              
+              // this variable is for changing color values with the viewing window
+              boolean change = false;
+              
+              // this is the x location where the rainbow begins being draw at
+              // it is calculated by taking the modulo between the frames and the width.
+              // this makes sure thate the start point is always between 0 and 1530.
+              int startx = frames % width;
+              
+              // begin for-loop drawing
+              for(round = 0; round<6; round++){
+                for(i = 0; i<255; i++) {
+                  
+                  // this checks if the color being drawn is in the viewing window
+                  if(startx > (mouseX + 550) && startx < (mouseX + 950)) {
+                      change = true;
+                  }
+                  else {
+                      change = false;
+                  }
+                  
+                  // the round variable is for knowing whether we need to increase or decrease the r,g, or b value.
+                  if(round == 0) {
+                    // change the color if in viewing window
+                    if(change) {
+                      if(invert) {
+                        // inverted colors
+                        fill(255-r, 255-g, 255-b);
+                      }
+                      else {
+                        // grayscale
+                        fill((0.3 * r) + (0.59 * g) + (0.11 * b));
+                      }
+                    }
+                    else {
+                      // normal colors
+                      fill(r,g,b);
+                    }
+                    rect(startx, 0, 1, height);
+                    // change color slightly and move to next pixel
+                    g += 1;
+                    startx += 1;
+                  }
+                  
+                  else if(round == 1) {
+                    // change the color if in viewing window
+                    if(change) {
+                      if(invert) {
+                        // inverted colors
+                        fill(255-r, 255-g, 255-b);
+                      }
+                      else {
+                        // grayscale
+                        fill((0.3 * r) + (0.59 * g) + (0.11 * b));
+                      }
+                    }
+                    else {
+                      // normal colors
+                      fill(r,g,b);
+                    }
+                    rect(startx, 0, 1, height);
+                    // change color slightly and move to next pixel
+                    r -= 1;
+                    startx += 1;
+                  }
+                  
+                  else if(round == 2) {
+                    // change the color if in viewing window
+                    if(change) {
+                      if(invert) {
+                        // inverted colors
+                        fill(255-r, 255-g, 255-b);
+                      }
+                      else {
+                        // grayscale
+                        fill((0.3 * r) + (0.59 * g) + (0.11 * b));
+                      }
+                    }
+                    else {
+                      // normal colors
+                      fill(r,g,b);
+                    }
+                    rect(startx, 0, 1, height);
+                    // change color slightly and move to next pixel
+                    b += 1;
+                    startx += 1;
+                  }
+                  
+                  else if(round == 3) {
+                    // change the color if in viewing window
+                    if(change) {
+                      if(invert) {
+                        // inverted colors
+                        fill(255-r, 255-g, 255-b);
+                      }
+                      else {
+                        // grayscale
+                        fill((0.3 * r) + (0.59 * g) + (0.11 * b));
+                      }
+                    }
+                    else {
+                      // normal colors
+                      fill(r,g,b);
+                    }
+                    rect(startx, 0, 1, height);
+                    // change color slightly and move to next pixel
+                    g -= 1;
+                    startx += 1;
+                  }
+                  
+                  else if(round == 4) {
+                    // change the color if in viewing window
+                    if(change) {
+                      if(invert) {
+                        // inverted colors
+                        fill(255-r, 255-g, 255-b);
+                      }
+                      else {
+                        // grayscale
+                        fill((0.3 * r) + (0.59 * g) + (0.11 * b));
+                      }
+                    }
+                    else {
+                      // normal colors
+                      fill(r,g,b);
+                    }
+                    rect(startx, 0, 1, height);
+                    // change color slightly and move to next pixel
+                    r += 1;
+                    startx += 1;
+                  }
+                  
+                  else if(round == 5) {
+                    // change the color if in viewing window
+                    if(change) {
+                      if(invert) {
+                        // inverted colors
+                        fill(255-r, 255-g, 255-b);
+                      }
+                      else {
+                        // grayscale
+                        fill((0.3 * r) + (0.59 * g) + (0.11 * b));
+                      }
+                    }
+                    else {
+                      // normal colors
+                      fill(r,g,b);
+                    }
+                    rect(startx, 0, 1, height);
+                    // change color slightly and move to next pixel
+                    b -= 1;
+                    startx += 1;
+                  }
+                  
+                  // if the drawing point is off of screen, reset it at 0.
+                  if(startx > width){
+                    startx = 0;
+                  }
+                }
+              }
+            }
+
+
+
+
+
+        </script>
+        <br>
+        <canvas id="sketch" style="border: 1px solid #00a7ff;"></canvas>
+
+
+        </div>
+
+    </div>
+
+    </body>
+</html>
