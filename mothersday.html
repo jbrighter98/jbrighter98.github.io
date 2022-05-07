@@ -1,0 +1,398 @@
+<!--
+    Ascension by Luke Bergs | https://soundcloud.com/bergscloud/
+    Music promoted by https://www.chosic.com/free-music/all/
+    Creative Commons CC BY-SA 3.0
+    https://creativecommons.org/licenses/by-sa/3.0/
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+html,
+body { height: 100%;
+}
+.parent {
+height: 200px;
+background: #ffffff;
+display: flex;
+align-items: center;
+justify-content: center;
+height:100vh;
+}
+.child {
+background-color: #FFFF00;
+width: 100px;
+height: 100px;
+}
+
+.tap {
+    height: 200px;
+    width: 200px;
+    border-color: white;
+    background-color: rgb(0, 191, 255);
+    color:white;
+    border-radius: 50%;
+    font-size: 40px;
+    box-shadow: none;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+.tap:focus {
+    background-color: rgb(0, 124, 165);
+}
+
+
+.tapSmall {
+    height: 75px;
+    width: 75px;
+    border-color: white;
+    background-color: rgb(209, 209, 209);
+    color:white;
+    border-radius: 50%;
+    font-size: 40px;
+    box-shadow: none;
+    font-family:Arial, Helvetica, sans-serif;
+
+}
+.tapSmall:focus {
+    background-color: rgb(0, 0, 0);
+}
+
+.normalMessage {
+    font-size: 40px;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.fadeIn {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+
+    /*pointer-events makes this node not respond to mouse/touch events
+    Which is probably what we want while the button is invisible.*/
+    pointer-events: none;
+}
+
+#next {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+
+    /*pointer-events makes this node not respond to mouse/touch events
+    Which is probably what we want while the button is invisible.*/
+    pointer-events: none;
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+function FadeItIn(ele, timeMS) {
+    setTimeout(function() {
+        //Re-enable mouse/touch events on the #next button
+        ele.style.pointerEvents = 'auto';
+
+        //Show the #next button
+        //Since opacity style is transitioned, the opacity change will automatically trigger the transition.
+        ele.style.opacity = 1;
+    }, timeMS);
+}
+
+function FadeItOut(ele, timeMS) {
+    setTimeout(function() {
+        //Re-enable mouse/touch events on the #next button
+        ele.style.pointerEvents = 'none';
+
+        //Show the #next button
+        //Since opacity style is transitioned, the opacity change will automatically trigger the transition.
+        ele.style.opacity = 0;
+    }, timeMS);
+}
+
+function CheckCorrect(number) {
+    if (number.id == 8) {
+        var ele = document.getElementById('phase1');
+        ele.style.display= 'none';
+        Phase2();
+
+    }
+    else {
+        var wn = document.getElementById('wrongNum');
+        if(wn.style.display == 'none') {
+            wn.innerHTML = "Sorry, " + number.id + " is incorrect :( <br>Try Again!"
+            wn.classList += " fadeIn";
+            wn.style.display= 'block';
+            FadeItIn(wn, 500);
+        }
+        else {
+            wn.innerHTML = "Sorry, " + number.id + " is incorrect :( <br>Try Again!"
+        }
+
+    }
+}
+
+function Phase6() {
+    var div1 = document.getElementById('phase5');
+    div1.style.display='none';
+
+    var div2 = document.getElementById('phase6');
+    div2.classList += " fadeIn";
+    div2.style.display='block';
+    FadeItIn(div2, 100);
+    //displayAudio();
+
+}
+
+function Phase5() {
+    var div3 = document.getElementById('phase4');
+    div3.style.display='none';
+
+    var div = document.getElementById('phase5');
+    var p5m1 = document.getElementById('p5m1');
+    var p5m2 = document.getElementById('p5m2');
+    var p5m3 = document.getElementById('p5m3');
+    var p5m4 = document.getElementById('p5m4');
+    var p5m5 = document.getElementById('p5m5');
+    var p5m6 = document.getElementById('p5m6');
+ 
+
+    var blocker = document.getElementById('blocker4');
+
+    p5m1.classList += " fadeIn";
+    p5m2.classList += " fadeIn";
+    p5m3.classList += " fadeIn";
+    p5m4.classList += " fadeIn";
+    p5m5.classList += " fadeIn";
+    p5m6.classList += " fadeIn";
+
+    div.style.display='block';
+    FadeItIn(p5m1, 500);
+    FadeItIn(p5m2, 3500);
+    FadeItIn(p5m3, 6500);
+    FadeItIn(p5m4, 9500);
+    FadeItIn(p5m5, 12500);
+    FadeItIn(p5m6, 15500);
+    FadeItIn(blocker, 21500);
+
+    setTimeout(Phase6, 24500);
+}
+
+function Phase4() {
+    var div2 = document.getElementById('phase3');
+    div2.style.display='none';
+
+    var div = document.getElementById('phase4');
+    var p4m1 = document.getElementById('p4m1');
+    var p4m2 = document.getElementById('p4m2');
+    var p4m3 = document.getElementById('p4m3');
+    var p4m4 = document.getElementById('p4m4');
+ 
+
+    var blocker = document.getElementById('blocker3');
+
+    p4m1.classList += " fadeIn";
+    p4m2.classList += " fadeIn";
+    p4m3.classList += " fadeIn";
+    p4m4.classList += " fadeIn";
+
+
+    div.style.display='block';
+    FadeItIn(p4m1, 500);
+    FadeItIn(p4m2, 3500);
+    FadeItIn(p4m3, 6500);
+    FadeItIn(p4m4, 9500);
+    FadeItIn(blocker, 15500);
+
+    setTimeout(Phase5, 18500);
+    
+}
+
+function displayAudio() {
+    var x = document.getElementById("myAudio");
+    x.style.display= 'block';
+    
+}
+
+function Phase3() {
+    var div1 = document.getElementById('phase2');
+    div1.style.display='none';
+
+    var div2 = document.getElementById('phase3');
+    var mess = document.getElementById('mess1');
+    div2.classList += " fadeIn";
+    mess.classList += " fadeIn";
+    div2.style.display='block';
+    FadeItIn(div2, 100);
+    FadeItIn(mess, 2000);
+    //displayAudio();
+
+    var blocker = document.getElementById('blocker2');
+    FadeItIn(blocker, 7000);
+
+    setTimeout(Phase4, 8000);
+}
+
+function Phase2() {
+    var div = document.getElementById('phase2');
+    var date = document.getElementById('date');
+    var month = document.getElementById('month');
+    var eight = document.getElementById('eight');
+    var year = document.getElementById('year');
+    var thatmeans = document.getElementById('thatmeans');
+    var its = document.getElementById('its'); 
+
+    var blocker = document.getElementById('blocker1');
+
+    date.classList += " fadeIn";
+    month.classList += " fadeIn";
+    eight.classList += " fadeIn";
+    thatmeans.classList += " fadeIn";
+    its.classList += " fadeIn";
+    year.classList += " fadeIn";
+
+    div.style.display='block';
+    FadeItIn(eight, 500);
+    FadeItIn(date, 2500);
+    FadeItIn(month, 4500);
+    FadeItIn(year, 4500);
+    FadeItIn(thatmeans, 6500);
+    FadeItIn(its, 8500);
+    FadeItIn(blocker, 10500);
+
+    setTimeout(Phase3, 12500);
+}
+
+function BeginGame(button) {
+
+    button.style.display='none';
+    var ele = document.getElementById('phase1');
+    ele.classList += " fadeIn";
+    ele.style.display= 'block';
+    FadeItIn(ele, 1500);
+    
+
+}
+
+
+window.onload = function() {
+    setTimeout(function() {
+        //Re-enable mouse/touch events on the #next button
+        document.getElementById("next").style.pointerEvents = 'auto';
+
+        //Show the #next button
+        //Since opacity style is transitioned, the opacity change will automatically trigger the transition.
+        document.getElementById("next").style.opacity = 1;
+    }, 1000);
+};
+
+</script>
+</head>
+<body style="text-align: center;">
+
+<div class="parent">
+    <div id="phase1" style="display: none;" class="normalMessage">
+        Choose a Number from 1 to 10 <br><br><br>
+        <button id="1" class="tapSmall" onclick="CheckCorrect(this)">1</button>
+        <button id="2" class="tapSmall" onclick="CheckCorrect(this)">2</button>
+        <button id="3" class="tapSmall" onclick="CheckCorrect(this)">3</button>
+        <button id="4" class="tapSmall" onclick="CheckCorrect(this)">4</button>
+        <button id="5" class="tapSmall" onclick="CheckCorrect(this)">5</button>
+        <button id="6" class="tapSmall" onclick="CheckCorrect(this)">6</button>
+        <button id="7" class="tapSmall" onclick="CheckCorrect(this)">7</button>
+        <button id="8" class="tapSmall" onclick="CheckCorrect(this)">8</button>
+        <button id="9" class="tapSmall" onclick="CheckCorrect(this)">9</button>
+        <button id="10" class="tapSmall" onclick="CheckCorrect(this)">10</button>
+
+        <br><br>
+
+        <span id="wrongNum" style="display: none; color: red">Incorrect, Try again :)</span>
+    </div>
+
+    <div id="phase2" style="display: none; font-size: 50px;" class="normalMessage">
+        
+        <span id="date">Today is...</span> <br> <br>
+        <span id="month" style="font-size: 70px;">May  </span>
+        <span id="eight" style="font-size: 70px;">  8</span>
+        <span id="year" style="font-size: 70px;">th, 2022</span>
+        <br><br>
+
+        <span id="thatmeans">That means...</span> <br><br>
+        <span id="its">It's...</span>
+
+        <div id="blocker1" class="fadeIn" style="position: fixed; top: 0; width: 100vw; height: 100vh; background-color: white;"></div>
+
+    </div>
+
+
+
+    <div id="phase3" style="display: none; font-size: 80px;" class="normalMessage">
+    
+        <img src="mdayImages/flower1.gif" style="width: 300px; height: auto" alt="flower1">
+        <img src="mdayImages/flower2.gif" style="width: 300px; height: auto" alt="flower2"><br><br>
+       Mother's Day!!!!!<br><br>
+
+       <span id="mess1" style="font-size: 50px;">It's a day all about you!</span> <br><br>
+       <img src="mdayImages/flower3.gif" style="width: 300px; height: auto" alt="flower3">
+       <img src="mdayImages/flower4.gif" style="width: 300px; height: auto" alt="flower4">
+
+       <!--<audio id="myAudio" style="display: none;" controls autoplay>
+        <source src="Ascension.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>-->
+
+      <p id="demo"></p>
+    
+       <div id="blocker2" class="fadeIn" style="position: fixed; top: 0; width: 100vw; height: 100vh; background-color: white;"></div>
+
+    </div>
+
+
+    <div id="phase4" style="display: none; font-size: 50px;" class="normalMessage">
+        
+        <span id="p4m1">You know who the best mother in the world is?</span> <br> <br>
+        <span id="p4m2" >Read the first word.</span><br> <br>
+        <span id="p4m3" >That's right!</span><br> <br>
+        <span id="p4m4" style="font-size: 90px;">YOU!!!
+        <br><br>
+
+        <img src="mdayImages/you.jpg" style="width: 500px; height: auto" alt="you">
+        </span>
+
+        <div id="blocker3" class="fadeIn" style="position: fixed; top: 0; width: 100vw; height: 100vh; background-color: white;"></div>
+
+    </div>
+
+
+    <div id="phase5" style="display: none; font-size: 40px;" class="normalMessage">
+        
+        <span id="p5m1" style="font-size: 50px;">But seriously...</span> <br> <br>
+        <span id="p5m2" >I know I don't show it or say it much...</span><br> <br>
+        <span id="p5m3" >And I know I can be a pain in the ass at times...</span><br> <br>
+        <span id="p5m4" >But you really are the best mother anyone can ask for.</span><br> <br>
+        <span id="p5m5" >I wouldn't give you up for anything in the world.</span><br> <br>
+        <span id="p5m6" style="font-size: 50px;">You're Perfect</span>
+
+        <div id="blocker4" class="fadeIn" style="position: fixed; top: 0; width: 100vw; height: 100vh; background-color: white;"></div>
+
+    </div>
+
+
+    <div id="phase6" style="display: none; font-size: 80px;" class="normalMessage">
+    
+        Love Ya! <br> Happy Mother's Day!<br><br>
+
+        <img src="mdayImages/momAlone.png" style="width: 500px; height: auto; border-radius:50%;" alt="beautiful"> <br><br>
+        
+        
+        <button id="end" class="tap" onclick="window.location.href = 'http://www.google.com'">Tap to Restart</button><br><br>
+    </div>
+
+
+
+    <button id="next" class="tap" onclick="BeginGame(this)">Tap to begin</button><br><br>
+</div>
+
+
+
+</body>
+</html>
