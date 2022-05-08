@@ -118,14 +118,17 @@ function CheckCorrect(number) {
     }
     else {
         var wn = document.getElementById('wrongNum');
+        if(number.id == 5) {
+            wn.innerHTML = "Sorry, " + number.id + " is incorrect :( <br>Try Again! <br> <span style='font-size: 20px;>I knew you would choose your favorite number</span>"
+        }
+        else {
+            wn.innerHTML = "Sorry, " + number.id + " is incorrect :( <br>Try Again!"    
+        }
+        
         if(wn.style.display == 'none') {
-            wn.innerHTML = "Sorry, " + number.id + " is incorrect :( <br>Try Again!"
             wn.classList += " fadeIn";
             wn.style.display= 'block';
             FadeItIn(wn, 500);
-        }
-        else {
-            wn.innerHTML = "Sorry, " + number.id + " is incorrect :( <br>Try Again!"
         }
 
     }
