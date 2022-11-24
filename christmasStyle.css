@@ -15,7 +15,7 @@ body {
 }
 .container p {
     font-size: 25px;
-    color:x00FF00;
+    color: green;
 }
 .container ul {
     margin-left:15%;
