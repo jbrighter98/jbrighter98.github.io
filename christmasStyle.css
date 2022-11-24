@@ -14,11 +14,11 @@ body {
     -webkit-animation: colorchange 10s infinite alternate;
 }
 .container p {
-    font-size: 15px;
+    font-size: 20px;
 }
 .container ul {
     margin-left:15%;
-    font-size: 30px;
+    font-size: 20px;
     width:50%;
     text-align: left;
 }
