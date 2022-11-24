@@ -14,7 +14,8 @@ body {
     -webkit-animation: colorchange 10s infinite alternate;
 }
 .container p {
-    font-size: 20px;
+    font-size: 25px;
+    color:x00FF00;
 }
 .container ul {
     margin-left:15%;
