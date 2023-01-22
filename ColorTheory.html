@@ -1,36 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Joseph Brighter - Color Theory</title>
+        <title>Joe Brighter - Color Theory</title>
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="animations.css">
         <script type="text/javascript" src="js/processing.js"></script>
     </head>
     <body>
 
-      <div class="side fade-in-text">
 
-        <div class="top" >
-            <img alt="My Logo" src="PersonalLogoBlue.png">            
-        </div>
-        <div class="sidecontent">
-            <button class="button" onclick="location.href = 'index.html';">About</button> <br>
-            <button class="button" onclick="location.href = 'contact.html';">Contact</button><br>
-            <button class="button" onclick="location.href = 'directory.html';">Directory</button><br>
-        </div>
-        <div class="bottom">
-            <a style="color: #00a7ff;" href="https://www.linkedin.com/in/joseph-brighter-53607a176/"><img alt="My LinkedIn" src="LinkedIn-Logos/LI-In-Bug.png"></a>.
-        </div>
+    <div class="content1">
 
-    </div>
+        <div style="padding-top:3%;">
 
-
-    <div class="content">
-
-        <div class="centered-text fade-in-text" style="padding-top:3%;">
-
-          <p>This project was an exploration into how RGB colors are converted to grayscale or their inverse. (left click to switch)</p>
-
+          <p style="text-align: center;">This project was an exploration into how RGB colors are converted to grayscale or their inverse. (left click to switch)</p>
+          <button class="project prevent-select" style="margin-top: 12px; width: 30%" onclick="location.href = 'projects.html';">Return to Projects</button>
           <script type="text/processing" data-processing-target="sketch">
 
             int frames = 0;
@@ -57,7 +40,7 @@
               
               // making the viewing window
               fill(255, 0);
-              rect(mouseX+550, 0, 400, height);
+              rect(mouseX-225, 0, 400, height);
               
             }
             
@@ -88,7 +71,7 @@
                 for(i = 0; i<255; i++) {
                   
                   // this checks if the color being drawn is in the viewing window
-                  if(startx > (mouseX + 550) && startx < (mouseX + 950)) {
+                  if(startx > (mouseX - 225) && startx < (mouseX + 175)) {
                       change = true;
                   }
                   else {
@@ -241,13 +224,13 @@
 
 
         </script>
-        <br>
         <canvas id="sketch" style="border: 1px solid #00a7ff;"></canvas>
-
+        
 
         </div>
 
-    </div>
 
+    </div>
+      
     </body>
 </html>

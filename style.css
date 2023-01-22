@@ -1,87 +1,205 @@
 html,
 body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background-color: #222222;
-}
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #e7e7e7;
+  }
+  
+  .top-container {
+    background-color: #f1f1f1;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .header {
+    text-align: center;
+    background: #e7e7e7;
+    color: #242424;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    height:10%;
+  }
+  .header h1 {
+    font-family: "Book Antiqua", Georgia, "times new roman", serif;
+    color: #7D1D20;
+    font-size: 36px;
+  }
+  
+  .content {
+    margin-left: 15%;
+    margin-top: 10%;
+    padding: 1px 10px;
+    text-align: center;
+  }
+  .content img {
+    width: 20%;
+    height: auto;
+    border-radius: 50%;
+  }
 
-.side {
-  background-color: #c4c4c4;
-  position: fixed;
-  float: left;
-  height: 100%;
-  width: 15%;
-}
-
-.side img {
-  width:20%;
-  height:auto;
-  margin-left: 10%;
-  margin-top: 10%;
-  margin-bottom:10%;
-}
-.side .top {
-  height:auto;
-  width: 100%;
-}
-
-.side .bottom {
-  text-align: center;
-  width: 100%;
-}
-
-.sidecontent {
-  height:auto;
-  width: 100%;
-}
-
-.side .button {
-  margin:10%;
-  color: #170064;
-}
-
-.button {
-  /*margin-left: 25%;*/
-  font-size: 25px;
-  background-color: transparent;
-  border: none;
-  /*border-bottom: #111111;*/
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.button:hover {
-  color:white;
-  background-color: #170064;
-  border-radius: 5px;
-  /*border-bottom: 2px #170064 solid*/;
+.toolbar {
+    position: fixed;
+    width: 100%;
+    text-align: left;
 }
 
 
-.content {
-  background-color:transparent;
-  position: fixed;
-  left:15%;
-  /*float: right;*/
-  height: 100%;
-  width: 85%;
+  .toolbar ul.sidenav {
+    list-style-type: none;
+    padding: 0;
+    width: 15%;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    
+  }
+  
+  .toolbar ul.sidenav li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+   
+  .toolbar ul.sidenav li a.active {
+    background-color: #7D1D20;
+    color: #e7e7e7;
+  }
+  
+  .toolbar ul.sidenav li a:hover:not(.active) {
+    background-color: rgb(187, 187, 187);
+  }
+
+
+  #bs {
+    width: 7.5%
+  }
+
+  #cc {
+    width: 15%
+  }
+
+
+  .project {
+    display: block;
+    border: 1px solid rgb(175, 175, 175);
+    padding: 10px;
+    box-shadow: 5px 8px 8px #6d6d6d;
+    cursor: pointer;
+    width: 30%;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: white;
 }
 
-.centered-text {
-  /*position:relative;*/
-  font-family: Arial, Helvetica, sans-serif;
-  color:white;
-  text-align: center;
-  padding-top: 10%;
-}
+  .project:hover{
+    border-width: 2px;
+    border-color: #7D1D20;
+    margin-bottom: 18px;
+  }
 
-.centered-text img {
-  width: 20%;
-  border-radius: 50%;
-}
+
+  .prevent-select {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+  }
+
+
+  .content1 {
+    background-color:transparent;
+    position: fixed;
+    margin: auto;
+    /*float: right;*/
+    height: 100%;
+    width: 85%;
+  }
+  
+  .centered-text1 {
+    /*position:relative;*/
+    font-family: Arial, Helvetica, sans-serif;
+    color:white;
+    text-align: center;
+    padding-top: 10%;
+  }
+  
+  .centered-text img {
+    width: 20%;
+    border-radius: 50%;
+  }
+
+  @media screen and (max-width: 900px) {
+
+    .toolbar ul.sidenav {
+        top: 50px;
+        width: 100%;
+        height: auto;
+        position: fixed;
+        background: #e7e7e7;
+      }
+      
+      .toolbar ul.sidenav li a {
+        float: left;
+        padding: 15px;
+      }
+
+      .content {
+        font-size: 14px;
+        margin-top: 150px;
+        margin-left: 0;
+      }
+      .content img{
+        width: 30%;
+    }
+
+    #bs {
+        width: 10%
+      }
+    
+      #cc {
+        width: 20%
+      }
+
+      .project {
+        width: 50%;
+      }
+
+  }
+
+  @media screen and (max-width: 400px) {
+    .toolbar ul.sidenav {
+        position: relative;
+        top: -20px;
+    }
+    .toolbar ul.sidenav li a {
+      text-align: center;
+      float: none;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .content {
+        font-size: 12px;
+        margin-top: 250px;
+    }
+    .content img{
+        width: 40%;
+    }
+    .header h1 {
+        font-size: 24px;
+    }
+    
+    #bs {
+        width: 15%
+      }
+    
+      #cc {
+        width: 30%
+      }
+
+      .project {
+        width: 80%;
+      }
+
+  }
