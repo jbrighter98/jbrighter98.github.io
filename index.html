@@ -1,35 +1,198 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Joe Brighter</title>
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!--<link rel="stylesheet" href="animations.css">-->
-    </head>
-    <body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katazuma | Official Site</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        <div class="header" id="myHeader">
-            <h1 class="prevent-select">Joe Brighter</h1>
-            <div class="toolbar" id="toolbar">
-                <ul class="sidenav">
-                    <li><a class="active" href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                  </ul>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo-link">
+                <img src="bandImages/LOGO.png" alt="Katazuma Logo" class="header-logo" oncontextmenu="return false;" ondragstart="return false;">
+            </a>
+
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#shows" class="nav-item">Shows</a></li>
+                    <li><a href="#merch" class="nav-item">Merch</a></li>
+                    <li><a href="#about" class="nav-item">About</a></li>
+                    <li><a href="#contact" class="nav-item">Contact</a></li>
+                </ul>
+                <div class="top-socials">
+                    <a href="https://www.instagram.com/katazumaband/" target="_blank"><img src="icons/instagram_icon.png" alt="Instagram" class="social-icon" oncontextmenu="return false;" ondragstart="return false;"></a>
+            		<a href="https://open.spotify.com/artist/1JeWYdfm8KF38pJAi5rBnU" target="_blank"><img src="icons/spotify_icon.png" alt="Spotify" class="social-icon" oncontextmenu="return false;" ondragstart="return false;"></a>
+            		<a href="https://www.youtube.com/channel/UCpWG7WjfHsVNnY6LkHmFxbA" target="_blank"><img src="icons/youtube_icon.png" alt="YouTube" class="social-icon" oncontextmenu="return false;" ondragstart="return false;"></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-image-banner">
+        <div class="banner-fade-overlay"></div>
+    </section>
+
+    <section id="shows" class="content-section">
+        <div class="split-grid-card">
+            <div class="split-text-side">
+                <h2>Upcoming Shows</h2>
+                <div id="tour-dates-container">
+                    <p class="loading">Loading dates...</p>
+                </div>
+            </div>
+            <div class="square-crop-wrapper">
+                <img src="bandImages/AIdrumCymbal1.jpg" alt="Band Live Performance" class="centered-square-img" oncontextmenu="return false;" ondragstart="return false;">
             </div>
         </div>
+    </section>
 
-        <div class="content" id="home">
-
-            <h1>Software Developer, Web Developer, and Video Game Developer.</h1>
-            <h2>I am always interested in new projects and opportunities!</h2>
-            <h2>Check out some things I've worked on!</h2>
-            <img id="profile" src="me.jpg">
-
-
+    <section id="merch" class="content-section">
+        <div class="glass-card">
+            <h2>Merch Store</h2>
+            <div class="merch-grid">
+                <div class="merch-item">
+                    <img src="bandImages/SAMPLET.png" alt="T-Shirt" oncontextmenu="return false;" ondragstart="return false;">
+                    <h3>Classic Logo Tee</h3>
+                    <p class="price">$25.00</p>
+                    <a href="https://merch.yourbandname.com" target="_blank" class="btn">Buy on Printful</a>
+                </div>
+                <div class="merch-item">
+                    <img src="bandImages/SAMPLEdarkT.jpg" alt="Dark T-Shirt" oncontextmenu="return false;" ondragstart="return false;">
+                    <h3>Dark Logo Tee</h3>
+                    <p class="price">$25.00</p>
+                    <a href="https://merch.yourbandname.com" target="_blank" class="btn" >Buy on Printful</a>
+                </div>
+                <div class="merch-item">
+                    <img src="bandImages/SAMPLEHoodie.jpg" alt="Hoodie" oncontextmenu="return false;" ondragstart="return false;">
+                    <h3>Gradient Hoodie</h3>
+                    <p class="price">$45.00</p>
+                    <a href="https://merch.yourbandname.com" target="_blank" class="btn">Buy on Printful</a>
+                </div>
+                <div class="merch-item">
+                    <img src="bandImages/SAMPLEHat.png" alt="Hat" oncontextmenu="return false;" ondragstart="return false;">
+                    <h3>Logo Dad Hat</h3>
+                    <p class="price">$20.00</p>
+                    <a href="https://merch.yourbandname.com" target="_blank" class="btn">Buy on Printful</a>
+                </div>
+            </div>
         </div>
-        
+    </section>
 
-    </body>
+    <section id="about" class="content-section">
+        <div class="glass-card">
+            <h2>The Band</h2>
+            <!--<p class="band-intro">We are a 4-piece indie rock outfit blending raw garage energy with atmospheric textures.</p>
+		-->
+            <div class="band-members-grid">
+                <div class="member-card">
+                    <div class="member-photo-wrapper">
+                        <img src="bandImages/Brian1.jpeg" alt="Vocalist" class="member-photo" oncontextmenu="return false;" ondragstart="return false;">
+                    </div>
+                    <h3>Brian Walter</h3>
+                    <p class="member-role">Lead Vocals / Guitar</p>
+					<ul class="member-bio">
+						<li><u>Enjoys</u>: CDs and vinyl Records, Scooby-Doo, arcades</li>
+						<li><u>Favorite Food</u>: Thai Curry</li>
+						<li><u>Favorite Artists</u>: the Smashing Pumpkins, Dinosaur Jr., Radiohead, Alice in Chains, Nirvana, the Lemonheads, Weezer, Chet Baker, Bowling for Soup, REM, Incubus, Alien Ant Farm</li>
+						<li><u>Song on Repeat</u>: “Truffles” by Wheatus</li>
+						<li><u>Why I Play Music</u>:  “For the deep-thinkers, the lost, the hard workers, and especially the misfits.”</li>
+						<li><b><u>Air Nomad</u></b></li>
+					</ul>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo-wrapper">
+                        <img src="bandImages/Brian2.jpeg" alt="Guitarist" class="member-photo" oncontextmenu="return false;" ondragstart="return false;">
+                    </div>
+                    <h3>Dylan Hall (aka Mae Jahmoose)</h3>
+                    <p class="member-role">Lead Guitar</p>
+                    <ul class="member-bio">
+						<li><u>Enjoys</u>: mediocre chess playing, his dog, turtles, and Jesus</li>
+						<li>Hogwarts dropout but they let him keep the wand</li>
+						<li><u>Favorite Artists</u>: Pink Floyd, Led Zeppelin, Jimi Hendrix, John Mayer, Mo Lowda & the Humble, Radiohead, Weezer</li>
+						<li><u>Song on Repeat</u>: “Have a Cigar” by Pink Floyd</li>
+						<li><u>Why I Play Music</u>: “to nourish the soul.”</li>
+						<li><b><u>Earth Bender</u></b></li>
+					</ul>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo-wrapper">
+                        <img src="bandImages/Brian3.jpg" alt="Bassist" class="member-photo" oncontextmenu="return false;" ondragstart="return false;">
+                    </div>
+                    <h3>Matt Driscoll</h3>
+                    <p class="member-role">Bass</p>
+                    <ul class="member-bio">
+						<li><u>Enjoys</u>: a good book, vintage clothes, pre-2000’s technology</li>
+						<li><u>Favorite Food</u>: Peanut Butter & Jelly on white bread</li>
+						<li><u>Favorite Artists</u>: the Beatles, Oasis, Mac Demarco, U2, Bob Dylan, Jim Croce, John Prine, The Cure, King Crimson, KGLW, Primus, The Smiths, Tom Petty.</li>
+						<li><u>Current Song on Repeat</u>: “Cast No Shadow” by Oasis</li>
+						<li><u>Why I Play Music</u>: “It keeps the lights on!”</li>
+						<li><b><u>Water Bender</u></b></li>
+					</ul>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo-wrapper">
+                        <img src="bandImages/Brian4.jpg" alt="Drummer" class="member-photo" oncontextmenu="return false;" ondragstart="return false;">
+                    </div>
+                    <h3>Jack LaMonica</h3>
+                    <p class="member-role">Drums</p>
+                    <ul class="member-bio">
+						<li><u>Enjoys</u>: Pokemon, Chiropractors, One Piece, Football</li>
+						<li><u>Favorite Food</u>: Taco Bell</li>
+						<li><u>Favorite Artists</u>: Green Day, Biffy Clyro, Soundgarden, Pearl Jam, Alice in Chains</li>
+						<li><u>Current Song on Repeat</u>: “Black Chandelier” by Biffy Clyro</li>
+						<li><u>Why I Play Music</u>: “Make drum go boom.”</li>
+						<li><b><u>Fire Bender</u></b></li>
+					</ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="content-section">
+        <div class="split-grid-card">
+            <div class="square-crop-wrapper">
+                <img src="bandImages/AIGuitarPlaying1.jpg" alt="Band Promo Asset" class="centered-square-img" oncontextmenu="return false;" ondragstart="return false;">
+            </div>
+            
+            <div class="split-text-side">
+                <h2>Contact</h2>
+                <p class="contact-sub">For booking, press, or general inquiries, drop us a line below:</p>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="4" required placeholder="Write your message here..."></textarea>
+                    </div>
+                    <button type="submit" class="btn form-submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/katazumaband/" target="_blank"><img src="icons/instagram_icon.png" alt="Instagram" class="social-icon" oncontextmenu="return false;" ondragstart="return false;"></a>
+            <a href="https://open.spotify.com/artist/1JeWYdfm8KF38pJAi5rBnU" target="_blank"><img src="icons/spotify_icon.png" alt="Spotify" class="social-icon" oncontextmenu="return false;" ondragstart="return false;"></a>
+            <a href="https://www.youtube.com/channel/UCpWG7WjfHsVNnY6LkHmFxbA" target="_blank"><img src="icons/youtube_icon.png" alt="YouTube" class="social-icon" oncontextmenu="return false;" ondragstart="return false;"></a>
+        </div>
+        <p class="copyright">© 2026 Katazuma. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
 </html>
