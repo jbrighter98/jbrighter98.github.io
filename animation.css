@@ -63,3 +63,11 @@
     filter: drop-shadow(0 0 0 transparent); /* Clean state */
   }
 }
+
+@media (max-width: 900px) {
+
+  .logo-link {
+    width: 150px; /* Slightly smaller max-width for tablets */
+  }
+
+}
