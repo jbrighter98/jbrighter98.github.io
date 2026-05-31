@@ -1,0 +1,65 @@
+.logo-link {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 250px; /* Adjust this to whatever max-width you want your logo to be */
+    max-width: 100%; /* Keeps it responsive on small mobile screens */
+}
+
+#logo-container {
+  position: relative;
+  width: 100%; 
+  max-width: 450px; /* Adjust to how big you want the logo */
+  
+  /* The Bulletproof Aspect-Ratio (144 / 900 = 16%) */
+  padding-top: 16%; 
+  
+  /* Flexbox protections so it doesn't get squished */
+  flex-shrink: 0;
+  flex-grow: 1;
+  
+  margin: 0 auto;
+}
+
+.slice {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Fills the padded area of the container */
+  
+  background-image: url('bandImages/LOGO.png');
+  background-size: 100% 100%; /* Forces the image to perfectly touch the edges */
+  background-position: center;
+  background-repeat: no-repeat; 
+}
+
+.glitch-active .slice {
+  /* var(--glitch-dur) and var(--glitch-delay) are injected by our JS.
+    'forwards' ensures it stays in its final clean state when done.
+  */
+  animation: slice-jump var(--glitch-dur) var(--glitch-delay) linear forwards;
+}
+
+@keyframes slice-jump {
+  0%, 29.9% { 
+    transform: translateX(0); 
+    filter: drop-shadow(0 0 0 transparent); /* Clean state */
+  }
+  30%, 69.9% { 
+    /* Jumps to the random horizontal offset */
+    transform: translateX(var(--glitch-x)); 
+    /* Adds a harsh colored shadow slightly offset from the black logo */
+    filter: drop-shadow(3px 0 0 var(--glitch-color));
+  }
+  70%, 99.9% { 
+    /* Bounces slightly in the opposite direction for a sharper effect */
+    transform: translateX(calc(var(--glitch-x) * -0.5)); 
+    filter: drop-shadow(-2px 0 0 var(--glitch-color));
+  }
+  100% { 
+    /* Returns perfectly to zero */
+    transform: translateX(0); 
+    filter: drop-shadow(0 0 0 transparent); /* Clean state */
+  }
+}
