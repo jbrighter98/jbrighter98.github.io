@@ -1,4 +1,11 @@
 // Local mock data schema for immediate rendering
+const SHEET_ID = "10xcm0Mwbw86-RCxINRvJuFdBu1mcwTLZaV-XlNKnTGQ"; // Placeholder Google Sheet ID
+const API_KEY = "AIzaSyDgdSOkirNDWg1K-CpdQTkmuQ73OjYawv0";
+const SHOWS_TAB_NAME = 'shows';
+const CONTACTS_TAB_NAME = 'contacts';
+
+const API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHOWS_TAB_NAME}?key=${API_KEY}`;
+
 const mockTourDates = [
     { date: "JUN 12", venue: "Bobby's Bar", location: "Philadelphia, PA", link: "#" },
     { date: "JUN 18", venue: "The Poop Room", location: "New York, NY", link: "#" },
@@ -26,35 +33,89 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Render Tour Module ---
-    renderTourDates(mockTourDates);
+    fetchLiveTourDates();
 
     renderGlitchAnimation();
 
-
-
-
-
 });
+
+
+async function fetchLiveTourDates() {
+    const container = document.getElementById('tour-dates-container');
+
+    try {
+        const response = await fetch(API_URL);
+        if (!response.ok) {
+            throw new Error('Network response tracking failed');
+        }
+        
+        const data = await response.json();
+        const rows = data.values; // This extracts the raw rows grid from Google
+
+        // If the sheet is empty or only contains headers
+        if (!rows || rows.length <= 1) {
+            container.innerHTML = '<p class="loading">No upcoming shows scheduled. Check back soon!</p>';
+            return;
+        }
+
+        // Extract headers from Row 1, and the data elements from subsequent rows
+        const headers = rows[0]; 
+        const dataRows = rows.slice(1); 
+
+        // Convert raw arrays into clean JavaScript objects matching our layout format
+        const formattedShows = dataRows.map(row => {
+            return {
+                date: row[headers.indexOf('date')] || '',
+                venue: row[headers.indexOf('venue')] || '',
+                location: row[headers.indexOf('location')] || '',
+                ticketsAvailable: row[headers.indexOf('ticketsAvailable')] || 'FALSE',
+                ticketsLink: row[headers.indexOf('ticketsLink')] || '#'
+            };
+        });
+
+        // Send the formatted data to your existing UI generator
+        renderTourDates(formattedShows);
+
+    } catch (error) {
+        console.error("Error loading tour dates:", error);
+        container.innerHTML = '<p class="loading" style="color: var(--accent-red);">Error loading tour dates. Please refresh.</p>';
+    }
+}
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    const options = { month: 'short', day: 'numeric' };
+    const currentYear = new Date().getFullYear();
+    if (date.getFullYear() > currentYear) {
+        options.year = 'numeric';
+    }
+    return date.toLocaleDateString('en-US', options).toUpperCase();
+}
 
 function renderTourDates(dates) {
     const container = document.getElementById('tour-dates-container');
     container.innerHTML = '';
 
-    if (dates.length === 0) {
-        container.innerHTML = '<p>No shows scheduled. Check back soon!</p>';
-        return;
-    }
-
     dates.forEach(show => {
+
+        if (!show.date || !show.venue || !show.location) {
+            return;
+        }
+
         const row = document.createElement('div');
-        row.className = 'tour-row';
+        row.className = 'show-row';
+
+        const isAvailable = show.ticketsAvailable.toUpperCase() === 'TRUE';
+
         row.innerHTML = `
-            <div class="tour-date">${show.date}</div>
-            <div class="tour-venue">${show.venue}</div>
-            <div class="tour-location">${show.location}</div>
+            <div class="show-date">${formatDate(show.date)}</div>
+            <div class="show-venue">${show.venue}</div>
+            <div class="show-location">${show.location}</div>
             <div>
-                <a href="${show.link}" target="_blank" class="btn">Tickets</a>
+                ${isAvailable 
+                    ? `<a href="${show.ticketsLink}" target="_blank" class="btn">Tickets</a>` 
+                    : `<span class="show-message">Come see us!</span>`
+                }
             </div>
         `;
         container.appendChild(row);
@@ -144,3 +205,40 @@ function renderGlitchAnimation() {
     container.addEventListener('mouseenter', playGlitchAnimation);
 
 }
+
+
+
+
+/* ==========================================================================
+   CONTACT SECTION FORM HANDLER
+   ========================================================================== */
+
+const SCRIPT_ID = 'AKfycbytv7nRCKKDV-_ONjLKeevDv-PmmX_-9pfiYQz9RZ4wHRm6qbin13tOyb26CLIjM797ng';
+const scriptURL = `https://script.google.com/macros/s/${SCRIPT_ID}/exec`;
+const form = document.forms['submit-to-google-sheet'];
+const msg = document.getElementById("msg");
+
+form.addEventListener('submit', e => {
+    document.getElementById('timestamp').value = new Date().toISOString();
+    msg.innerHTML = "Sending..."
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message Sent! We will reach out soon."
+            msg.style.color = "#61b752"
+            setTimeout(function() {
+                msg.innerHTML = ""
+                msg.style.color = "#fff"
+            }, 5000)
+            form.reset()
+        })
+        .catch(error => {
+            console.error('Error!', error.message)
+            msg.innerHTML = "Failed to send message. Please refresh page and try again."
+            msg.style.color = "#cb1a1a"
+            setTimeout(function() {
+                error.innerHTML = ""
+                msg.style.color = "#fff"
+            }, 5000)
+        })
+})

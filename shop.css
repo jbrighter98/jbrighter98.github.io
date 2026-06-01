@@ -1,0 +1,305 @@
+/* --- Global Shop Adjustments --- */
+.shop-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 8rem 1.5rem 4rem 1.5rem; /* Heavy top padding clears the sticky header */
+}
+
+.shop-header {
+    text-align: left;
+    margin-bottom: 4rem;
+}
+
+.shop-sub {
+    color: #8996a8;
+    margin-top: 1rem;
+}
+
+/* --- Cart Button in Header --- */
+.header-cart-container {
+    border-left: 2px solid #e1e4e8;
+    padding-left: 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.cart-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-dark);
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: color 0.2s;
+    transition: filter 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.cart-btn:hover {
+    transform: translateY(-2px);
+    filter: invert(19%) sepia(91%) saturate(5451%) hue-rotate(236deg) brightness(96%) contrast(101%);
+    color: var(--accent-blue);
+}
+
+/* --- Dedicated Shop Grid --- */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 3rem;
+}
+
+.shop-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.shop-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+.shop-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    background-color: #1a1f2c; /* Placeholder backdrop */
+}
+
+.shop-card h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+/* --- UI Overlays (Shared by Cart & Modal) --- */
+.ui-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(9, 11, 16, 0.85);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.ui-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #8996a8;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-btn:hover {
+    color: var(--accent-red);
+}
+
+/* --- Product Modal Popup --- */
+.product-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -45%);
+    width: 90%;
+    max-width: 800px;
+    background: var(--bg-main);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 2.5rem;
+    z-index: 2001;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+.product-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%); /* Subtle slide-up effect */
+}
+
+.product-modal .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.modal-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.modal-image-container img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--glass-border);
+}
+
+.modal-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--accent-blue);
+    margin: 1rem 0;
+}
+
+.modal-desc {
+    color: #8996a8;
+    line-height: 1.6;
+    margin-top: 0.5rem;
+}
+
+/* Specific select dropdown styling mapped to your dark theme */
+#size-select {
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+
+.checkout-btn {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1rem;
+}
+
+/* --- Slide-Out Cart Drawer --- */
+.cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background: var(--bg-main);
+    border-left: 1px solid var(--glass-border);
+    z-index: 2001;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
+
+.cart-drawer.active {
+    transform: translateX(0);
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.cart-items {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cart-item-row {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.cart-item-img {
+    width: 100%;
+    border-radius: 4px;
+}
+
+.cart-item-details h4 {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.cart-item-meta {
+    font-size: 0.8rem;
+    color: #8996a8;
+}
+
+.remove-item {
+    background: none;
+    border: none;
+    color: var(--accent-red);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 0.4rem;
+}
+
+.empty-cart-msg {
+    text-align: center;
+    color: #8996a8;
+    margin-top: 2rem;
+}
+
+.cart-footer {
+    padding: 2rem;
+    border-top: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.cart-total-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+/* --- Mobile Breakpoints --- */
+@media (max-width: 768px) {
+    .header-cart-container {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid #e1e4e8;
+        padding-top: 1.5rem;
+        width: 80%;
+        justify-content: center;
+    }
+    
+    .modal-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .product-modal {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .cart-drawer {
+        width: 100%; /* Drawer takes full screen on phones */
+    }
+}

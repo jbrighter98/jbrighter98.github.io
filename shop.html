@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Store | Katazuma</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="animation.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <div id="logo-container"></div>
+            </a>
+
+            <button class="menu-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html#shows" class="nav-item">Shows</a></li>
+                    <li><a href="shop.html" class="nav-item">Merch</a></li>
+                    <li><a href="index.html#about" class="nav-item">About</a></li>
+                    <li><a href="index.html#contact" class="nav-item">Contact</a></li>
+                </ul>
+                <div class="header-cart-container">
+                    <button id="cart-toggle-btn" class="cart-btn">
+                        <img src="icons/cart_icon.png" alt="CART" class="social-icon" oncontextmenu="return false;" ondragstart="return false;"> (<span id="cart-count">0</span>)
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="shop-container">
+        <div class="shop-header">
+            <h2>Official Merch</h2>
+            <p class="shop-sub">Every purchase supports the band directly.</p>
+        </div>
+        
+        <div id="shop-grid" class="shop-grid"></div>
+    </main>
+
+    <div id="product-modal-overlay" class="ui-overlay">
+        <div class="product-modal">
+            <button id="close-modal-btn" class="close-btn">&times;</button>
+            <div class="modal-layout">
+                <div class="modal-image-container">
+                    <img id="modal-img" src="" alt="Product">
+                </div>
+                <div class="modal-details">
+                    <h3 id="modal-title">Product Name</h3>
+                    <p id="modal-desc" class="modal-desc">Product description goes here.</p>
+                    <p id="modal-price" class="modal-price">$0.00</p>
+                    
+                    <div class="form-group">
+                        <label for="size-select">Select Size</label>
+                        <select id="size-select">
+                            <option value="S">Small</option>
+                            <option value="M" selected>Medium</option>
+                            <option value="L">Large</option>
+                            <option value="XL">X-Large</option>
+                            <option value="2XL">2X-Large (+$2.00)</option>
+                        </select>
+                    </div>
+                    
+                    <button id="add-to-cart-btn" class="btn checkout-btn">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-drawer-overlay" class="ui-overlay"></div>
+    <div id="cart-drawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button id="close-cart-btn" class="close-btn">&times;</button>
+        </div>
+        <div id="cart-items-container" class="cart-items">
+            <p class="empty-cart-msg">Your cart is empty.</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0.00</span>
+            </div>
+            <button id="checkout-btn" class="btn checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="https://www.instagram.com/katazumaband/" target="_blank"><img src="icons/instagram_icon.png" alt="Instagram" class="social-icon" oncontextmenu="return false;" ondragstart="return false;"></a>
+            <a href="https://open.spotify.com/artist/1JeWYdfm8KF38pJAi5rBnU" target="_blank"><img src="icons/spotify_icon.png" alt="Spotify" class="social-icon" oncontextmenu="return false;" ondragstart="return false;"></a>
+            <a href="https://www.youtube.com/channel/UCpWG7WjfHsVNnY6LkHmFxbA" target="_blank"><img src="icons/youtube_icon.png" alt="YouTube" class="social-icon" oncontextmenu="return false;" ondragstart="return false;"></a>
+        </div>
+        <p class="copyright">© 2026 Katazuma. All rights reserved. Icons by Flaticon and Icons8</p>
+    </footer>
+
+    <script src="shop.js"></script>
+</body>
+</html>
