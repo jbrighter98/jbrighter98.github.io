@@ -445,6 +445,12 @@ h2::after {
     border-color: var(--accent-blue);
 }
 
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+    max-height: 300px;
+}
+
 .form-submit-btn {
     align-self: flex-start;
 }
