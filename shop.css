@@ -278,6 +278,35 @@
     margin-bottom: 1.5rem;
 }
 
+
+/* --- Terminal Loading State --- */
+.terminal-loader {
+    grid-column: 1 / -1; /* Forces it to span the entire width of your CSS grid */
+    text-align: center;
+    padding: 60px 20px;
+    font-family: monospace;
+    font-size: 1.2rem;
+    color: #213ff9; /* Matches your glitch blue */
+    letter-spacing: 2px;
+}
+
+.terminal-loader .cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2rem;
+    background-color: #EE040F; /* Matches your glitch red */
+    vertical-align: middle;
+    margin-right: 5px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+
+
 /* --- Mobile Breakpoints --- */
 @media (max-width: 768px) {
     .header-cart-container {
