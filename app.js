@@ -6,6 +6,9 @@ const CONTACTS_TAB_NAME = 'contacts';
 
 const API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHOWS_TAB_NAME}?key=${API_KEY}`;
 
+const PRINTFUL_API_URL = "https://t8ry0h2y8g.execute-api.us-east-2.amazonaws.com/products";
+const featuredGrid = document.getElementById('featured-grid');
+
 const mockTourDates = [
     { date: "JUN 12", venue: "Bobby's Bar", location: "Philadelphia, PA", link: "#" },
     { date: "JUN 18", venue: "The Poop Room", location: "New York, NY", link: "#" },
@@ -35,9 +38,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchLiveTourDates();
 
+    loadFeaturedMerch();
+
     renderGlitchAnimation();
 
 });
+
+
+async function loadFeaturedMerch() {
+    try {
+        const response = await fetch(PRINTFUL_API_URL);
+        if (!response.ok) throw new Error('Failed to fetch store items');
+        
+        const products = await response.json();
+        
+        // Cap the preview at exactly 4 products
+        const previewItems = products.slice(1, 5);
+        
+        featuredGrid.innerHTML = previewItems.map(product => {
+            // Grab the retail price from the first variant to use as the baseline "From $X.XX" price
+            const basePrice = product.variants && product.variants.length > 0 
+                ? product.variants[0].price 
+                : 0;
+
+            return `
+                <a href="shop.html" class="merch-item" style="text-decoration: none; color: inherit;">
+                    <img src="${product.img}" alt="${product.name}" oncontextmenu="return false;" ondragstart="return false;">
+                    <h3>${product.name}</h3>
+                    <!-- <p class="price">$${basePrice.toFixed(2)}</p> -->
+                </a>
+            `;
+        }).join('');
+        
+    } catch (error) {
+        console.error('Error loading featured merch:', error);
+        // Fallback UI gracefully handled if your backend is sleeping or spinning up
+        featuredGrid.innerHTML = `<p class="error-msg">Check back soon for official merchandise!</p>`;
+    }
+}
 
 
 async function fetchLiveTourDates() {
