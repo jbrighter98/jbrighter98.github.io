@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const navMenu = document.querySelector('.nav-menu');
     const navItems = document.querySelectorAll('.nav-item');
 
+    const fadeImages = document.querySelectorAll('.fade-img');
+
     // Toggle menu view open/closed
     menuToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
@@ -35,6 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.remove('active');
         });
     });
+
+
+    if (fadeImages.length > 0) {
+        let currentImageIndex = 0;
+
+        setInterval(() => {
+            // Fade out the current image
+            fadeImages[currentImageIndex].classList.remove('active');
+            
+            // Calculate the index of the next image (loops back to 0 at the end)
+            currentImageIndex = (currentImageIndex + 1) % fadeImages.length;
+            
+            // Fade in the next image
+            fadeImages[currentImageIndex].classList.add('active');
+            
+        }, 4000); // 4000ms = 4 seconds per image. Adjust as needed!
+    }
+
 
     fetchLiveTourDates();
 
@@ -121,12 +141,17 @@ async function fetchLiveTourDates() {
 }
 
 function formatDate(dateString) {
-    const date = new Date(dateString);
+
+    const safeDateString = dateString.replace(/-/g, '/');
+    const date = new Date(safeDateString);
+
     const options = { month: 'short', day: 'numeric' };
     const currentYear = new Date().getFullYear();
+
     if (date.getFullYear() > currentYear) {
         options.year = 'numeric';
     }
+    
     return date.toLocaleDateString('en-US', options).toUpperCase();
 }
 
