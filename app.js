@@ -9,13 +9,6 @@ const API_URL = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/value
 const PRINTFUL_API_URL = "https://t8ry0h2y8g.execute-api.us-east-2.amazonaws.com/products";
 const featuredGrid = document.getElementById('featured-grid');
 
-const mockTourDates = [
-    { date: "JUN 12", venue: "Bobby's Bar", location: "Philadelphia, PA", link: "#" },
-    { date: "JUN 18", venue: "The Poop Room", location: "New York, NY", link: "#" },
-    { date: "JUL 02", venue: "Sick Place", location: "Boston, MA", link: "#" },
-    { date: "JUL 15", venue: "The Club", location: "Washington, DC", link: "#" }
-];
-
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- Mobile Navigation Menu Handler ---
@@ -192,7 +185,7 @@ function renderGlitchAnimation() {
     let currentTopPercent = 0;
 
     for (let i = 0; i < numSlices; i++) {
-        // 1. Calculate height percentages (Same as before)
+        // Calculate height percentages
         let sliceHeightPercent = Math.random() * 9 + 3;
 
         if (i === numSlices - 1) {
@@ -203,25 +196,25 @@ function renderGlitchAnimation() {
 
         const bottomInsetPercent = 100 - (currentTopPercent + sliceHeightPercent);
 
-        // 2. Create the DOM element (Same as before)
+        // Create the DOM element
         const sliceDiv = document.createElement('div');
         sliceDiv.classList.add('slice');
         sliceDiv.style.clipPath = `inset(${currentTopPercent}% 0 ${bottomInsetPercent}% 0)`;
 
         // ==========================================
-        // NEW: Generate the Animation Variables
+        // Generate the Animation Variables
         // ==========================================
         
         // Pick a random distance between 2% and 8% of the logo's width.
         // We randomly multiply by 1 or -1 so some jump left, some jump right.
-        // 1. Flip a coin (true or false) to decide direction
+        // Flip a coin (true or false) to decide direction
         const goesLeft = Math.random() > 0.5;
         
-        // 2. Pick the distance. If it goes left, make it negative.
+        // Pick the distance. If it goes left, make it negative.
         const randomDistance = (Math.random() * 6 + 2) * (goesLeft ? -1 : 1);
         
-        // 3. Assign the color based on the direction (Using classic glitch hex codes!)
-        const sliceColor = goesLeft ? '#EE040F' : '#213ff9'; // Red for left, Cyan/Blue for right
+        // Assign the color based on the direction 
+        const sliceColor = goesLeft ? '#EE040F' : '#33C5E8'; // Red for left, Cyan/Blue for right
         
         // Pick a very short duration between 0.1s and 0.3s
         const randomDuration = Math.random() * 0.1 + 0.1;
