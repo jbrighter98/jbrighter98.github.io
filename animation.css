@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    width: 300px; /* Adjust this to whatever max-width you want your logo to be */
+    width: 250px; /* Adjust this to whatever max-width you want your logo to be */
     max-width: 100%; /* Keeps it responsive on small mobile screens */
 }
 
@@ -11,8 +11,8 @@
   width: 100%; 
   max-width: 500px; /* Adjust to how big you want the logo */
   
-  /* The Bulletproof Aspect-Ratio (144 / 900 = 16%) */
-  padding-top: 16%; 
+  /* The Bulletproof Aspect-Ratio (492 / 1801 = 27%) */
+  padding-top: 27%; 
   
   /* Flexbox protections so it doesn't get squished */
   flex-shrink: 0;
